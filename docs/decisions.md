@@ -60,3 +60,10 @@
 - User ne permet pas Restrict/Cascade sur une relation enfant ; le recruteur est donc obligatoire par validation métier plutôt que required sur le lookup.
 - Les blocs PermissionSet suivent l'ordre du schéma ; les champs universellement requis n'ont pas de FLS configurable.
 - Score conserve une décimale technique avec validation d'entier ; le service de saisie contrôlera l'entrée avant stockage pour éviter les arrondis implicites.
+
+## ADR-010 — Raccordement métier et publication de développement
+
+- Date : 7 novembre 2026 ; statut : réalisé dans TFDev à la reprise demandée.
+- Quatre actions Apex uniquement ; aucune sonde, action RH ou recherche générique dans la version métier. Confirmation conversationnelle et require_user_confirmation Salesforce pour réserver. Id Apex déclaré object/lightning__recordIdType dans Agent Script, exigence constatée au démarrage Preview.
+- Publication puis activation de la version 1 dans la Developer Edition vérifiée, après appels réels. Métadonnées générées conservées séparément du manifeste backend. Droit TF_AssistantAccess indépendant, déployé après publication et affecté à l'opérateur.
+- Runtime publié testé techniquement ; visibilité Lightning, clics humains et conversation sous compte restreint restent à recetter. Aucun utilisateur technique séparé ni restriction des droits Admin existants n'est revendiqué.

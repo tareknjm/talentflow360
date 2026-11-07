@@ -4,11 +4,11 @@ TalentFlow 360 est un démonstrateur Salesforce de parcours RH interne. Le MVP c
 
 ## État actuel
 
-**Point de démonstration du 7 novembre 2026 — développement en pause à la demande de l'utilisateur.**
+**Reprise du 7 novembre 2026 — quatre actions métier vérifiées depuis Agentforce Preview Live Test.**
 
 Le socle et les quatre actions métier sont déployés dans **TFDev, Developer Edition**. Le parcours J−7 à J+90, la replanification et l'alerte de satisfaction ont été exécutés sur données fictives. La dernière suite complète compte **18 tests Apex réussis**, puis **5 tests ciblés réussis** après ajout de l'indicateur de simulation. La réservation a aussi été vérifiée par deux transactions réellement concurrentes et une vraie échéance Flow a été observée.
 
-**Agentforce a réellement appelé la sonde TF_ConnectionProbe dans un Preview Live Test.** Le bundle Employee reste local : il n'est pas encore publié/activé dans Lightning, et ses quatre actions métier ne sont pas encore raccordées.
+**Agentforce a réellement appelé les quatre actions métier** : brief, liste, réservation après confirmation et suivi. Une répétition retourne ALREADY_RESERVED sans doublon ; demandes privées et décision RH sont refusées. La version 1 Employee est publiée et active dans TFDev, avec un appel réel du brief depuis son runtime publié. Le droit d'accès est affecté à l'opérateur ; la visibilité et les clics dans Lightning restent à recetter. La sonde initiale est archivée séparément. Le Flow quotidien définitif a également été observé.
 
 Commencer par la [petite démonstration guidée](docs/mini-demo.md). Les [résultats réels](docs/test-results.md) distinguent les tests réussis, échoués et non exécutés.
 
@@ -63,4 +63,4 @@ Le calendrier accepté est dans [docs/sprints.md](docs/sprints.md). Consulter la
 
 ## Limites actuelles
 
-Le Preview de diagnostic est prouvé, mais les conversations métier et le canal Lightning restent à réaliser. Les écrans sont actifs et les layouts Admin sont affectés ; leurs clics humains restent à recetter. Les deux resets sur jeu réel, les mesures de valeur, la vidéo et la reconstruction sur org neuve ne sont pas encore validés. Aucun gain métier ni conformité n'est revendiqué.
+Les conversations métier sont prouvées sous l'opérateur connecté Admin/RH ; leur recette en compte restreint et le canal Lightning restent à réaliser. Les écrans sont actifs et les layouts Admin sont affectés ; leurs clics humains restent à recetter. Les deux resets sur jeu réel, les mesures de valeur, la vidéo et la reconstruction sur org neuve ne sont pas encore validés. Aucun gain métier ni conformité n'est revendiqué.

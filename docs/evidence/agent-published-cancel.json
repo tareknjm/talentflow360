@@ -1,0 +1,10 @@
+{
+  "observedAtUtc": "2026-11-07T22:31:13.985381+00:00",
+  "target": "TFDev Developer Edition CAN96",
+  "apiVersion": "68.0",
+  "agentType": "AgentforceEmployeeAgent",
+  "mode": "Published Runtime (no mockMode field)",
+  "sessionStartedAtUtc": "2026-11-07T22:30:03.464Z",
+  "configurationSha256": "66f2fd8403ad12392483f4d48cbe05157a9425a64960afc58a2de97e8a4111d4",
+  "invocations": []
+}

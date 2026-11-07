@@ -26,6 +26,9 @@ types={
 body='<?xml version="1.0" encoding="UTF-8"?>\n<Package xmlns="http://soap.sforce.com/2006/04/metadata">\n'
 for kind,(directory,pattern,suffix) in types.items():
     members=sorted(path.name.removesuffix(suffix) for path in (BASE/directory).glob(pattern))
+    if kind=='PermissionSet':
+        # Requires the published agent; deploy after publication with agent-access.xml.
+        members=[name for name in members if name!='TF_AssistantAccess']
     if not members: continue
     body+='    <types>\n'+''.join(f'        <members>{escape(name)}</members>\n' for name in members)+f'        <name>{kind}</name>\n    </types>\n'
 body+='    <version>68.0</version>\n</Package>\n'

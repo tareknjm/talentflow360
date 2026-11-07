@@ -1,0 +1,67 @@
+{
+  "observedAtUtc": "2026-11-07T22:18:56.142248+00:00",
+  "target": "TFDev Developer Edition CAN96",
+  "apiVersion": "68.0",
+  "agentType": "AgentforceEmployeeAgent",
+  "mode": "Live Test",
+  "sessionStartedAtUtc": "2026-11-07T22:16:10.438Z",
+  "configurationSha256": "f5b73affd5564352a8261115354da09a692cc781d82fc5f67e54f263213ee573",
+  "invocations": [
+    {
+      "action": "get_onboarding",
+      "inputs": {
+        "candidateCode": "TF-DEMO-001"
+      },
+      "executionStatus": "success",
+      "outputs": {
+        "resultCode": "SUCCESS",
+        "payload": {
+          "nextTasks": [
+            {
+              "dueDate": "2026-11-14",
+              "stage": "Arrival"
+            }
+          ],
+          "steps": [
+            {
+              "executionMode": "Scheduled",
+              "status": "Completed",
+              "dueDate": "2026-11-05",
+              "stage": "Day1"
+            },
+            {
+              "executionMode": "Scheduled",
+              "status": "Completed",
+              "dueDate": "2026-11-07",
+              "stage": "PreArrival"
+            },
+            {
+              "executionMode": "Scheduled",
+              "status": "Pending",
+              "dueDate": "2026-11-14",
+              "stage": "Arrival"
+            },
+            {
+              "executionMode": "Simulation",
+              "status": "Completed",
+              "dueDate": "2026-12-14",
+              "stage": "Day30"
+            },
+            {
+              "executionMode": "Simulation",
+              "status": "Completed",
+              "dueDate": "2027-01-13",
+              "stage": "Day60"
+            },
+            {
+              "executionMode": "Simulation",
+              "status": "Completed",
+              "dueDate": "2027-02-12",
+              "stage": "Day90"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

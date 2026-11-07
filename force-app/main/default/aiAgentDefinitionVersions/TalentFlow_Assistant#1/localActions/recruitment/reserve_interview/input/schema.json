@@ -1,0 +1,35 @@
+{
+  "required" : [ "candidateCode", "slotId", "requestKey", "confirmed" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "candidateCode" : {
+      "title" : "Candidate Code",
+      "description" : "Code candidat confirmé.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "confirmed" : {
+      "title" : "Confirmed",
+      "description" : "True uniquement après confirmation explicite du recruteur.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "requestKey" : {
+      "title" : "Request Key",
+      "description" : "Clé stable de répétition, de 1 à 80 caractères.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "slotId" : {
+      "title" : "Slot Id",
+      "description" : "Identifiant retourné par list_slots pour l’horaire confirmé.",
+      "lightning:type" : "lightning__recordIdType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

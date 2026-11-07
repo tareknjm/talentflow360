@@ -108,6 +108,8 @@ Au checkpoint : les six affectations Admin ont été sauvegardées et contrôlé
 
 ## 9. Rejouer la sonde par la CLI
 
+**Historique du checkpoint sonde uniquement.** Le bundle courant a depuis été remplacé par la configuration métier publiée. Pour les commandes courantes, suivre la section 11 et mini-demo.md ; ne pas attendre connection_probe de l'assistant métier.
+
 1. Dans le projet et le terminal configurés, lancer `sf.cmd agent validate authoring-bundle --api-name TalentFlow_Assistant --target-org TFDev`. Résultat attendu : success=true. La locale Agent Script est fr, pas fr_FR.
 2. Lancer `sf.cmd agent preview start --authoring-bundle TalentFlow_Assistant --use-live-actions --target-org TFDev`. Résultat attendu : session ouverte avec actions réelles. Le marqueur INVALID reste technique et ne désigne aucun utilisateur à créer ; Employee utilise le contexte connecté.
 3. Envoyer `sf.cmd agent preview send --authoring-bundle TalentFlow_Assistant --utterance "Teste la connexion avec TF-PROBE-001" --target-org TFDev`. Résultat attendu : appel connection_probe et safeSummary provenant du Flow réel. En interactif, lancer `sf.cmd agent preview --authoring-bundle TalentFlow_Assistant --use-live-actions --target-org TFDev` ; sans le flag, les actions sont simulées.
@@ -122,3 +124,18 @@ Au checkpoint : les six affectations Admin ont été sauvegardées et contrôlé
 4. Répéter le seed. Résultat attendu : mêmes effectifs ; aucun écrasement des réservations ou approbations déjà réalisées.
 5. Pour réinitialiser uniquement la démo, exécuter `sf.cmd apex run --file scripts/apex/resetDemo.apex --target-org TFDev`. Résultat attendu : seul le lot exact est réinitialisé. Une dépendance hors lot fait refuser le reset avant suppression. Cette opération est destructive dans le lot de démonstration.
 6. Vérifier les effectifs et un témoin hors lot ; répéter une seconde fois pour la recette. Résultat attendu : témoin préservé, pas de message. Les tests unitaires isolés ne remplacent pas ces observations sur le jeu réellement présenté.
+
+## 11. Publication métier et recette Lightning
+
+Le 7 novembre : publication réussie, 16 éléments récupérés et 3 déployés ; version 1 Active relue. La récupération automatique a reformaté quatre classes Apex, sans changement fonctionnel ; ces différences cosmétiques ont été retirées après comparaison. Le backend garde API 68.
+
+1. Avant publication, relire Organization et comparer l'inventaire AiAgentDefinition/AiAuthoringBundle TalentFlow aux modifications du binôme. Résultat attendu pour la première publication : aucun composant TalentFlow existant ; TFDev Developer Edition CAN96.
+2. Valider le brouillon et le tester avec `agent preview start --authoring-bundle TalentFlow_Assistant --use-live-actions --target-org TFDev`. Résultat attendu : quatre actions réelles, sorties minimisées, confirmation avant mutation et refus documentés. Fermer chaque session sélectionnée avec son session-id.
+3. Exécuter `sf.cmd agent publish authoring-bundle --api-name TalentFlow_Assistant --target-org TFDev --api-version 68.0`. Résultat attendu : success=true ; métadonnées de la version générées et récupérées. Cette publication crée une version, elle ne vaut pas activation. Opération déjà réalisée pour v1 ; ne pas la répéter sans changement voulu.
+4. Activer la version précise avec `sf.cmd agent activate --api-name TalentFlow_Assistant --version 1 --target-org TFDev --api-version 68.0`. Résultat attendu : version 1 Active, relue via AiAgentDefinitionVersion. Opération déjà réalisée dans TFDev.
+5. Déployer `manifest/agent-access.xml` après publication, puis affecter **TF_AssistantAccess** au seul utilisateur de recette autorisé. Résultat attendu : droit d'accès au seul assistant, sans nouveaux droits objet/RH. Déploiement déjà réussi : 0AfgK00000Z8uGzSAJ ; une affectation à l'opérateur courant confirmée. Le manifeste backend exclut ce droit pour ne pas dépendre d'un agent absent lors de l'installation initiale.
+6. Dans Lightning, ouvrir le panneau Agentforce et son sélecteur. Résultat attendu : TalentFlow Assistant visible ; vérifier au besoin Setup → Agentforce Agents → TalentFlow Assistant → Agent Access. La visibilité réelle reste NotRun, malgré le statut Active et le droit affecté. Aucun changement global Einstein/Agentforce n'a été effectué.
+7. Demander le brief de TF-DEMO-003, puis fermer le panneau et recetter séparément les boutons RH sur TF-DEMO-002 selon mini-demo.md. Résultat attendu : action réelle dans le chat, validation humaine dans le Screen Flow ; aucune validation RH exposée à l'agent.
+8. Refaire les conversations sous un compte de recrutement restreint ayant accès au seul périmètre prévu. Résultat attendu : refus de dossier inaccessible et aucun accès RH induit. Statut actuel NotRun ; les tests Apex isolés ne remplacent pas cet essai.
+
+Sources : [publication Agentforce DX](https://developer.salesforce.com/docs/ai/agentforce/guide/agent-dx-nga-publish.html), [accès Employee Agent](https://help.salesforce.com/s/articleView?id=ai.agent_manage_aea_access.htm&language=en_US&type=5), [connexion Lightning](https://help.salesforce.com/s/articleView?id=ai.agent_deploy_emp_lex.htm&language=en_US&type=5). Le champ surfacesEnabled=false relu dans la version n'est pas employé comme preuve de visibilité ou d'indisponibilité du panneau ; seul l'essai utilisateur pourra conclure ici.

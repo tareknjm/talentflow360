@@ -1,0 +1,29 @@
+{
+  "observedAtUtc": "2026-11-07T22:20:35.311265+00:00",
+  "target": "TFDev Developer Edition CAN96",
+  "apiVersion": "68.0",
+  "agentType": "AgentforceEmployeeAgent",
+  "mode": "Live Test",
+  "sessionStartedAtUtc": "2026-11-07T22:16:10.438Z",
+  "configurationSha256": "f5b73affd5564352a8261115354da09a692cc781d82fc5f67e54f263213ee573",
+  "invocations": [
+    {
+      "action": "reserve_interview",
+      "inputs": {
+        "candidateCode": "TF-DEMO-002",
+        "slotId": "a02gK00000Uqj9SQAR",
+        "requestKey": "TF-AF-002-20261108",
+        "confirmed": true
+      },
+      "executionStatus": "success",
+      "outputs": {
+        "resultCode": "ALREADY_RESERVED",
+        "payload": {
+          "end": "2026-11-08T18:45:00.000Z",
+          "start": "2026-11-08T18:00:00.000Z",
+          "slotId": "a02gK00000Uqj9SQAR"
+        }
+      }
+    }
+  ]
+}

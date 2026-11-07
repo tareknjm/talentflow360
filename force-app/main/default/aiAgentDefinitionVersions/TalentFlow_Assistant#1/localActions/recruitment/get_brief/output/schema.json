@@ -1,0 +1,22 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "payloadJson" : {
+      "title" : "Payload Json",
+      "description" : "Données minimisées réelles; ne pas inventer ni enrichir avec des informations privées.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "resultCode" : {
+      "title" : "Result Code",
+      "description" : "Code réel: SUCCESS, INVALID_INPUT, NOT_AVAILABLE_OR_NOT_ACCESSIBLE, SLOT_UNAVAILABLE, ALREADY_RESERVED ou TECHNICAL_FAILURE.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

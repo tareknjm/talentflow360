@@ -4,13 +4,15 @@ Dernière mise à jour : 7 novembre 2026
 
 ## Phase courante
 
-**Point de démonstration — développement en pause à la demande de l'utilisateur le 7 novembre 2026. Checkpoint publié sur GitHub, branche main.**
+**Reprise demandée le 7 novembre 2026 — quatre actions vérifiées dans Preview Live Test ; TalentFlow_Assistant version 1 publié et activé dans TFDev. Le checkpoint GitHub de la pause reste disponible ; les changements de reprise sont locaux.**
 
 ### Réalisé
 
 - Socle Salesforce et quatre actions métier déployés ; six profils, six identités fictives et huit créneaux.
 - Six Flows actifs : validation RH, satisfaction, synchronisation, alerte, simulation et échéances quotidiennes.
-- Preuve Agentforce réelle sur la sonde en Preview Live Test ; bundle Employee local non encore publié.
+- Sonde conservée dans scripts/agentforce/connection-probe.agent ; bundle Employee courant raccordé aux quatre actions Apex métier, sans outil générique ni validation RH.
+- Confirmation conversationnelle puis garde-fou Salesforce require_user_confirmation pour la réservation. Configuration métier initiale archivée dans scripts/agentforce/business-preview-v1.agent ; clarification du sens de Simulation dans la version courante.
+- Publication réussie (16 éléments récupérés, 3 déployés), version 1 Active relue depuis l'org. Métadonnées générées aiAgents/aiAgentDefinitionVersions conservées. Le droit TF_AssistantAccess, sans droits objet supplémentaires, est déployé et affecté au seul opérateur connecté.
 - Guide de visite dans `docs/mini-demo.md`. Commit initial `63f70d9` puis checkpoint `c1a98ef` poussés vers `https://github.com/tareknjm/talentflow360`, branche main.
 
 ### Vérifié
@@ -18,15 +20,21 @@ Dernière mise à jour : 7 novembre 2026
 - Dernière suite complète : 18 tests Apex réussis. Dernière modification de sortie (Scheduled/Simulation) : déploiement 0AfgK00000Z44LqSAJ réussi et 5 tests d'actions réussis.
 - Réservation concurrente réelle : une seule réservation ; parcours et alerte exercés dans l'org ; Flow Once réellement déclenché, distinct des simulations.
 - Mode Live Test et FunctionStep connection_probe avec sa sortie réelle ; preuve expurgée dans `docs/evidence/agent-probe.json`.
+- Quatre FunctionStep métier réels : brief de TF-DEMO-006, liste des créneaux de TF-DEMO-002, réservation SUCCESS après confirmation et suivi de TF-DEMO-001. Preuves agent-business-*.json dans docs/evidence, avec empreintes de configuration.
+- Zéro réservation pour TF-DEMO-002 avant confirmation ; une après SUCCESS et toujours une après répétition ALREADY_RESERVED. Injection/données privées/classement/embauche refusés ; dossier absent signalé sans profil inventé. Sur le runtime publié, une demande Confirm pour TF-DEMO-003 a été annulée par « Non » : aucune action de réservation exécutée dans la trace et zéro réservation en base.
+- Passage quotidien définitif observé : TF_JourneyDaily TimesTriggered=1, PreviousFireTime=2026-11-07T16:00:11.162Z ; PreArrival exécuté en Scheduled à 16:00:15Z. Le test Once J+1 reste une preuve distincte.
+- Formulation initiale du suivi trop vague (« prévisualisation ») corrigée puis retestée : les simulations créent de vraies tâches synthétiques ; Pending ne signifie pas exécuté. Les deux sessions de cette reprise sont fermées.
+- Brief TF-DEMO-003 également appelé réellement depuis le runtime publié, distinct du Preview de brouillon. Preuve agent-published-brief.json ; ce runtime n'inscrit pas mockMode dans ses métadonnées, contrairement au Preview Live Test. Sa session est fermée également.
 
 ### Bloqué ou non encore vérifié
 
-- Quatre actions métier non encore raccordées à Agentforce ; publication/activation Lightning non effectuées.
-- Clics humains des Screen Flows, resets du jeu réel, mesures et vidéo non exécutés. Le passage quotidien reste à observer ; un passage Once du même service est déjà prouvé.
+- Publication et activation technique effectuées ; visibilité et conversation dans le panneau Lightning non encore vérifiées. surfacesEnabled=false a été relu, sans en déduire seul une indisponibilité : les accès utilisateur sont également déterminants. Le droit d'accès à l'agent a été ajouté ; aucun réglage global de l'org modifié.
+- Contexte Employee toujours celui de l'opérateur connecté avec droits Admin/RH : seules les quatre actions minimisées sont exposées. Les conversations en compte réellement restreint restent NotRun ; les tests Apex restreints déjà réussis ne les remplacent pas.
+- Clics humains des Screen Flows, resets du jeu réel, mesures et vidéo non exécutés. Refus d'une panne technique injectée dans une conversation non encore exercé. Toutes les sessions de cette reprise sont fermées.
 
 ### Prochaine action
 
-Faire la petite démonstration dans l'application : lanceur Salesforce → TalentFlow 360 → Dossiers talents → Tous les dossiers TalentFlow → TF-DEMO-001. Reprendre le raccordement métier Agentforce seulement à la demande de l'utilisateur.
+Dans Lightning, vérifier TalentFlow Assistant dans le panneau Agentforce puis demander le brief de TF-DEMO-003. Recetter ensuite le bouton Valider l'embauche de TF-DEMO-002 avec l'utilisateur, puis satisfaction et simulation. Préparer séparément la conversation en compte restreint. Conserver le dossier TF-DEMO-001 pour le parcours (six tâches désormais) ; TF-DEMO-002 est InterviewScheduled après la vraie réservation Agentforce du 8 novembre 18:00–18:45 UTC. Aucun reset effectué.
 
 ### Préparation GitHub et démo
 

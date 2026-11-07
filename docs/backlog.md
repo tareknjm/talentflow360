@@ -15,12 +15,12 @@ Statuts : `Todo`, `InProgress`, `Blocked`, `Done`.
 | TF-030 | 3 | Définir permission sets et matrice d'accès | Tarek | P0 | Done | Droits minimaux et partage exercés par TF_AccessTest ; contexte Employee partagé documenté |
 | TF-040 | 4 | Implémenter le brief candidat minimisé | Tarek | P0 | Done | Tests minimaux et appel direct réel, liste blanche sans identité |
 | TF-041 | 4 | Lister et réserver les créneaux de façon idempotente | Tarek | P0 | Done | Libre/occupé/passé/répété testés ; deux transactions concurrentes, une seule réservation |
-| TF-050 | 5 | Configurer `TalentFlow Assistant` | Binôme / Tarek | P0 | Todo | Actions réelles appelées et refus métier cohérents |
+| TF-050 | 5 | Configurer `TalentFlow Assistant` | Binôme / Tarek | P0 | Done | Quatre actions métier réellement appelées dans Preview Live Test ; confirmation et refus vérifiés, preuves expurgées |
 | TF-060 | 6 | Créer le Screen Flow de validation RH | Binôme | P0 | InProgress | Flow actif, service autorisé/refusé testé ; clics UI à recetter |
-| TF-070 | 7 | Générer le parcours J-7 à J+90 sans doublon | Binôme / Tarek | P0 | Done | Six étapes, replanification et vraie échéance Once vérifiées ; passage quotidien à surveiller |
+| TF-070 | 7 | Générer le parcours J-7 à J+90 sans doublon | Binôme / Tarek | P0 | Done | Six étapes, replanification, vraie échéance Once et passage quotidien définitif du 7 novembre vérifiés |
 | TF-071 | 7 | Saisir la satisfaction et créer l'alerte RH | Binôme | P1 | InProgress | 1/5 et 4/5 exercés dans l'org, alerte unique ; écran à recetter |
 | TF-080 | 8 | Construire les vues Lightning et KPI factuels | Binôme | P1 | InProgress | Application/listes/layouts déployés ; visite humaine et suivi visuel à valider |
-| TF-090 | 9 | Exécuter la recette sécurité, métier et IA responsable | Les deux | P0 | InProgress | 18 tests complets et 5 ciblés réussis ; conversations métier et mesures restantes |
+| TF-090 | 9 | Exécuter la recette sécurité, métier et IA responsable | Les deux | P0 | InProgress | 18 tests complets et 5 ciblés antérieurs ; conversations métier réelles effectuées ; recette UI, compte restreint et mesures restantes |
 | TF-100 | 10 | Préparer démo, reset et solution de secours | Les deux | P0 | InProgress | Petite démo prête ; resets réels, vidéo et gel final non exécutés |
 
 ## Affectation aux sprints et charges
@@ -60,4 +60,4 @@ Voir `sprints.md` pour dates, capacités et réserves. Les charges ci-dessous so
 | S5 | TF-100-C | Slides et vidéo locale | Binôme | Tarek | 4 | TF-100-B | Secours accessible hors réseau |
 | S5 | TF-100-D | Répétitions et contrôle matériel | Les deux | Les deux | 4 | TF-100-C | Parcours expliqué par chacun |
 
-État du checkpoint : socle, actions directes et parcours déployés/testés ; sonde Agentforce réellement invoquée en Preview, bundle non publié et actions métier non encore raccordées. Pause demandée pour petite démo et push GitHub. Les critères UI non exercés restent InProgress, sans bloquer l'enregistrement du checkpoint.
+État de reprise du 7 novembre : les quatre actions métier sont raccordées et réellement invoquées dans Preview Live Test. La réservation exige une confirmation et sa répétition ne crée pas de doublon. Publication suivie séparément dans progress.md ; activation Lightning et recette UI non annoncées terminées. Le checkpoint de pause b1f0b1a reste sur GitHub.

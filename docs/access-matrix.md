@@ -6,6 +6,7 @@
 |---|---|---|---|---|
 | TF_Recruiter | Recruteur interne | Profils, créneaux, étapes, satisfaction | Dossier courant, créneaux et création de satisfaction | Aucune identité ou approbation directe |
 | TF_AgentAccess | Base minimale des actions | Champs minimisés du profil, créneaux et états d'étapes | État d'entretien et réservation | Pas d'identité, satisfaction, approbation ou message de parcours |
+| TF_AssistantAccess | Accès au seul agent publié TalentFlow_Assistant | Aucun droit objet/champ supplémentaire | Aucune | À déployer après publication ; ne remplace pas TF_Recruiter ou TF_AgentAccess |
 | TF_HiringApprover | RH autorisé, en complément du recrutement | Identités, profils, satisfaction, étapes | Identités et validation via service dédié | Custom permission TF_ApproveHiring ; ne pas exposer le service à l'agent |
 | TF_DemoAdmin | Outils restreints du démonstrateur | Six objets | Gestion du lot synthétique | Pas de contournement de l'approbation, pas de partage global accordé |
 
@@ -19,7 +20,7 @@
 
 ## Frontière Agentforce
 
-Le modèle conseillé est Employee Agent. Le contexte effectif n'est pas encore confirmé. S'il réutilise les droits du RH, l'absence de droits dans TF_AgentAccess ne les retire pas : la frontière repose aussi sur les quatre outils limités, les DTO de sortie, l'absence d'outil générique et un contexte de page sans identité.
+Le modèle Employee Agent utilise ici le compte opérateur connecté Admin/RH. L'absence de droits dans TF_AgentAccess ne retire pas les autres permissions : la frontière repose aussi sur les quatre outils limités, les DTO de sortie, l'absence d'outil générique et un contexte de page sans identité.
 Ni la custom permission ni le service Apex ne prouvent seuls qu'une personne a cliqué. Le Screen Flow séparé, les actions exposées et les conversations doivent être testés.
 
 ## Tests attendus
@@ -30,4 +31,4 @@ Ni la custom permission ni le service Apex ne prouvent seuls qu'une personne a c
 4. RH autorisé : transition via parcours distinct et acteur/date corrects ; écriture forgée refusée.
 5. Actions agent : aucune restitution d'identité, satisfaction, champ d'approbation ou note privée.
 
-Statut au checkpoint : TF_AccessTest a exécuté les refus de partage, les FLS interdits à l'agent et la validation RH avec des utilisateurs Minimum Access - Salesforce. Le Preview Employee utilise le compte opérateur connecté (administrateur + rôles de démonstration) : aucune identité technique séparée n'est revendiquée. Sa seule action configurée est la sonde ; les quatre sorties métier sont testées directement mais pas encore exposées dans la conversation. Les clics UI restent NotRun.
+Statut de reprise : TF_AccessTest a exécuté les refus de partage, les FLS interdits à l'agent et la validation RH avec des utilisateurs Minimum Access - Salesforce. Aucune identité technique séparée n'est revendiquée. Les quatre actions métier sont les seuls outils exposés ; appels réels, refus sensible et répétition vérifiés dans la conversation. TF_AssistantAccess est déployé et affecté à l'opérateur ; il ne confère aucune permission RH. Les clics UI et les conversations sous un compte restreint restent NotRun.

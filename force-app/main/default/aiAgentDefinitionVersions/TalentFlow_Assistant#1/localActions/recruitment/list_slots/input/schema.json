@@ -1,0 +1,28 @@
+{
+  "required" : [ "candidateCode", "periodStart", "periodEnd" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "candidateCode" : {
+      "title" : "Candidate Code",
+      "description" : "Code candidat.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "periodEnd" : {
+      "title" : "Period End",
+      "description" : "Fin explicite avec fuseau horaire, au plus 31 jours après le début.",
+      "lightning:type" : "lightning__dateTimeStringType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "periodStart" : {
+      "title" : "Period Start",
+      "description" : "Début explicite avec fuseau horaire.",
+      "lightning:type" : "lightning__dateTimeStringType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
