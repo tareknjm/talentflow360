@@ -143,3 +143,4 @@ Les lignes de conception ci-dessus décrivent l'état avant la demande « go ».
 | UX-NATIVE-BROWSER-001 | Navigateur Salesforce | NotRun | Vérifier les quatre onglets et listes réelles, l'état vide, le bandeau, le fuseau et les actions existantes sur TF-DEMO-003/001. |
 | UX-NATIVE-RESTRICTED-001 | Compte recruteur réellement restreint | NotRun | FLS/partage, absence de contexte privé dans le chat, refus RH et visibilité des composants à recetter dans le navigateur. |
 | UX-NATIVE-ACCESSIBILITY-001 | Navigateur Salesforce | NotRun | Navigation clavier, zoom 200 %, largeurs 390/768/1440 et messages de chargement/erreur non vérifiés. |
+| UX-NATIVE-GIT-001 | GitHub tareknjm/talentflow360, main | Passed | 6466c3f poussé sans force depuis d7bcccd ; conception et livraison native incluses, 22 fichiers texte contrôlés sans motif de credential et sans répertoire de session/authentification indexé. Bilan documentaire ajouté ensuite. |
