@@ -1,0 +1,50 @@
+{
+  "observedAtUtc": "2026-11-07T23:38:21.283134+00:00",
+  "target": "TFDev Developer Edition CAN96",
+  "apiVersion": "68.0",
+  "deployments": [
+    {
+      "id": "0AfgK00000Z99kgSAB",
+      "status": "Succeeded",
+      "components": 5
+    },
+    {
+      "id": "0AfgK00000Z9EQzSAN",
+      "status": "Succeeded",
+      "components": 8
+    }
+  ],
+  "verification": "Metadata retrieved after deployment and related-list UI API HTTP 200; not a browser rendering test",
+  "recordPageAssignment": [
+    {
+      "actionName": "View",
+      "content": "TF_TalentWorkspace",
+      "formFactor": "Large",
+      "skipRecordTypeSelect": "false",
+      "type": "Flexipage",
+      "pageOrSobjectType": "TalentProfile__c"
+    }
+  ],
+  "compactLayout": "TF_TalentSummary",
+  "compactFields": [
+    "CandidateCode__c",
+    "Role__c",
+    "Status__c",
+    "Availability__c",
+    "StartDate__c"
+  ],
+  "relatedLists": [
+    {
+      "apiName": "InterviewSlots__r",
+      "label": "Entretiens"
+    },
+    {
+      "apiName": "JourneySteps__r",
+      "label": "Étapes de parcours"
+    }
+  ],
+  "lookupChanges": "relationshipLabel only compared with org backup",
+  "reservedSlotsIncludesProfile": true,
+  "browserAcceptance": "NotRun",
+  "restrictedUserAcceptance": "NotRun"
+}

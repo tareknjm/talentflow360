@@ -4,6 +4,20 @@ Dernière mise à jour : 7 novembre 2026
 
 ## Phase courante
 
+### UI native — premier incrément déployé le 7 novembre 2026
+
+- Réalisé : navigation TalentFlow centrée sur Dossiers/Créneaux/Étapes/Tâches et couleur de marque ; page TF_TalentWorkspace à quatre onglets, synthèse compacte, layout organisé, listes d'entretiens et de parcours avec libellés français. Colonne Dossier talent ajoutée aux créneaux réservés. Guide docs/ui-ux/native-workspace.md ; scripts de staging limité. Aucun Apex, Flow, permission ou enregistrement métier modifié.
+- Vérifié : TFDev Developer Edition CAN96 relue ; sauvegarde et comparaison avant mutation sans changement concurrent ; déploiement initial 0AfgK00000Z99kgSAB (5 composants) et finition 0AfgK00000Z9EQzSAN (8 composants) Succeeded. Affectation Large dans l'application et compact layout relus ; sept champs de page autorisés uniquement ; champs/validations TalentProfile inchangés. UI API HTTP 200 pour Entretiens et Étapes de parcours, colonnes attendues.
+- Bloqué ou non vérifié : rendu réel dans le navigateur, interaction des onglets avec compte restreint, contexte effectivement transmis au panneau global Agentforce et accessibilité restent NotRun. Accueil métier, compteurs, frise graphique et actions conditionnelles non livrés dans cet incrément. Aucun nouveau test Apex exécuté pour ces modifications de présentation.
+- Prochaine action : rouvrir TalentFlow 360, ouvrir TF-DEMO-003 et vérifier Vue d'ensemble/Préparation/Entretiens/Intégration ; consulter aussi le parcours existant de TF-DEMO-001. Puis poursuivre l'accueil standard après cette recette. Les captures de docs/ui-ux restent celles de la maquette, pas du déploiement Salesforce.
+
+### Évolution UI/UX — conception du 7 novembre 2026
+
+- Réalisé : maquette locale interactive docs/ui-ux/prototype.html, accueil et dossier à onglets, aperçus Recruteur/RH, état sans parcours et frise d'un autre scénario fictif. Spécification, critères d'acceptation et backlog liés à TF-080 dans docs/ui-ux/README.md. Aucun composant Salesforce modifié pour cette conception.
+- Vérifié : sources de navigation et layout relues ; leur structure actuelle confirme la priorité donnée à l'accueil métier et à la réorganisation du dossier. Données de la maquette statiques et explicitement distinctes de l'état réel de TFDev. HTML, références de navigation/ARIA et syntaxe JS contrôlés ; accueil et dossier rendus dans Chrome à 1440 × 1100 puis inspectés, captures dans docs/ui-ux.
+- Bloqué ou non vérifié : revue utilisateur, interactions complètes, clavier/zoom et responsive non encore validés ; capture 390 tronquée, viewport headless non instrumenté. Faisabilité précise des affectations, compteurs et suggestions Agentforce à vérifier ; aucun déploiement ni activation UI effectué dans cette étape. Les changements documentaires précédents du binôme/utilisateur sont conservés.
+- Prochaine action : ouvrir la maquette et comparer les vues Recruteur/RH ; prochain incrément technique défini : TF-080-UX-01 puis UX-02, en privilégiant les composants standard après lecture de TFDev et comparaison des changements distants. Les validations métier déjà ouvertes restent à terminer.
+
 **Reprise demandée le 7 novembre 2026 — quatre actions vérifiées dans Preview Live Test ; TalentFlow_Assistant version 1 publié et activé dans TFDev. Checkpoint de reprise 364a96a poussé sur GitHub/main ; checkpoint de pause conservé dans l'historique.**
 
 ### Réalisé
@@ -17,6 +31,7 @@ Dernière mise à jour : 7 novembre 2026
 
 ### Vérifié
 
+- Démonstration guidée : l'utilisateur confirme la saisie de satisfaction et la présence de l'alerte RH sur le dossier demandé TF-DEMO-002. Validation déclarée par l'utilisateur, sans relecture de l'org dans cette étape. Retour « c bon » après le guidage J+30 ; état final de l'étape et tâche de simulation à confirmer explicitement.
 - Dernière suite complète : 18 tests Apex réussis. Dernière modification de sortie (Scheduled/Simulation) : déploiement 0AfgK00000Z44LqSAJ réussi et 5 tests d'actions réussis.
 - Réservation concurrente réelle : une seule réservation ; parcours et alerte exercés dans l'org ; Flow Once réellement déclenché, distinct des simulations.
 - Mode Live Test et FunctionStep connection_probe avec sa sortie réelle ; preuve expurgée dans `docs/evidence/agent-probe.json`.
@@ -31,7 +46,7 @@ Dernière mise à jour : 7 novembre 2026
 
 - Publication et activation technique effectuées ; visibilité et conversation dans le panneau Lightning non encore vérifiées. surfacesEnabled=false a été relu, sans en déduire seul une indisponibilité : les accès utilisateur sont également déterminants. Le droit d'accès à l'agent a été ajouté ; aucun réglage global de l'org modifié.
 - Contexte Employee toujours celui de l'opérateur connecté avec droits Admin/RH : seules les quatre actions minimisées sont exposées. Les conversations en compte réellement restreint restent NotRun ; les tests Apex restreints déjà réussis ne les remplacent pas.
-- Clics humains des Screen Flows, resets du jeu réel, mesures et vidéo non exécutés. Refus d'une panne technique injectée dans une conversation non encore exercé. Toutes les sessions de cette reprise sont fermées.
+- Saisie de satisfaction et alerte confirmées par l'utilisateur dans la visite ; détail de la simulation J+30, validation RH humaine et conversation Lightning non encore documentés explicitement. Resets du jeu réel, mesures, vidéo et panne technique injectée dans une conversation non exécutés. Toutes les sessions techniques de cette reprise sont fermées.
 
 ### Prochaine action
 

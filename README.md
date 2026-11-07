@@ -14,6 +14,8 @@ Commencer par la [petite démonstration guidée](docs/mini-demo.md). Les [résul
 
 Le suivi factuel se trouve dans [docs/progress.md](docs/progress.md).
 
+Premier incrément UI/UX natif déployé : navigation simplifiée, synthèse du candidat et fiche à quatre onglets avec entretiens et parcours associés. Affectation à l'application vérifiée ; recette du rendu dans le navigateur encore à faire. Voir [la nouvelle fiche](docs/ui-ux/native-workspace.md) et [la maquette de conception](docs/ui-ux/README.md).
+
 ## Périmètre du MVP
 
 - Salesforce Lightning, objets personnalisés, Flow et Apex si nécessaire.

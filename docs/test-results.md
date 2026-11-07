@@ -104,3 +104,42 @@ Les confirmations suivantes sont des messages de recette synthétique envoyés p
 | BUSINESS-LIGHTNING-001 | Navigateur Salesforce | NotRun | Version active et droit affecté ; affichage dans le sélecteur et conversation Lightning à vérifier par l'utilisateur. |
 | BUSINESS-SOURCE-CHECK-001 | Poste local après publication | Passed | XML bien formés, syntaxe Python valide ; empreintes des configurations de preuves appariées à leurs archives, exactement quatre actions dans le runtime récupéré, confirmation requise pour réserve seulement, version 1 Active et logPrivateConversationData=false. Aucun email ni motif de credential détecté dans les 11 fichiers de métadonnées agent générées. Aucun changement fonctionnel Apex dans cette reprise. |
 | BUSINESS-GIT-PUSH-001 | GitHub tareknjm/talentflow360, main | Passed | Checkpoint métier 364a96a poussé sans force depuis b1f0b1a ; exclusions et motifs de credentials contrôlés avant commit. Bilan documentaire ajouté ensuite. |
+
+## Retours de la démonstration guidée — 7 novembre 2026
+
+| ID | Environnement | Statut | Résultat et source |
+|---|---|---|---|
+| UI-PULSE-001 | Interface Salesforce, dossier demandé TF-DEMO-002 | Passed | L'utilisateur répond « c bon » après le guidage de saisie unique 1/5. Confirmation déclarative ; aucune relecture distante effectuée ici. |
+| UI-PULSE-ALERT-001 | Interface Salesforce, Tâches | Passed | L'utilisateur répond « c bon » après la demande de vérifier l'alerte RH liée au dossier. Confirmation déclarative, sans capture ou identifiant de tâche. |
+| UI-SIMULATION-001 | Interface Salesforce, J+30 du dossier demandé TF-DEMO-002 | NotRun | Retour « c bon » après un guidage se terminant par l'ouverture de l'étape : ne permet pas à lui seul de distinguer ouverture et exécution complète. État final et tâche Simulation à confirmer. |
+
+## Conception UI/UX locale — 7 novembre 2026
+
+| ID | Environnement | Statut | Résultat et source |
+|---|---|---|---|
+| UX-PROTOTYPE-STRUCTURE-001 | Windows, Python HTMLParser et Node --check | Passed | prototype.html parsé ; IDs uniques, cibles de navigation/ARIA existantes, syntaxe JS valide ; aucun script externe, aucune ressource distante ni appel réseau dans le prototype. Contrôle répété après ajout des liens directs. |
+| UX-PROTOTYPE-RENDER-001 | Chrome headless dans le bac restreint | Failed | Processus graphique inutilisable dans le bac ; aucune capture produite par ce premier essai. Ce n'est pas un échec Salesforce. |
+| UX-PROTOTYPE-RENDER-002 | Chrome headless autorisé, profils locaux isolés, 1440 × 1100 | Passed | Captures accueil et dossier générées puis inspectées visuellement ; bandeau, navigation, cartes, onglets et aperçu assistant lisibles. docs/ui-ux/apercu-accueil.png et apercu-dossier.png. Aucun accès Salesforce. |
+| UX-PROTOTYPE-NARROW-001 | Capture headless demandée 390 × 1000 | NotRun | Captures générées mais tronquées ; largeur effective du viewport non instrumentée, pas de conclusion de recette responsive. Ajustements de contraintes CSS effectués ; contrôle réel avec émulation encore à faire. |
+| UX-PROTOTYPE-INTERACTION-001 | Navigateur, clavier et rôles | NotRun | Comportements écrits, mais bascule des rôles, dialogues, navigation clavier et zoom non exercés complètement dans un navigateur. La capture dossier prouve seulement le chargement du lien direct. |
+| UX-SALESFORCE-DEPLOY-001 | TFDev | NotRun | Aucun composant UI/UX de cette proposition déployé ou activé. La maquette et les chiffres sont fictifs ; ils ne prouvent pas l'état réel de l'org. |
+
+## Premier incrément UI natif — 7 novembre 2026
+
+Les lignes de conception ci-dessus décrivent l'état avant la demande « go ». Les nouvelles preuves concernent les vrais composants Salesforce ; elles ne valident pas encore le rendu du navigateur.
+
+| ID | Environnement | Statut | Résultat et source |
+|---|---|---|---|
+| UX-NATIVE-TARGET-001 | TFDev, API 68.0 | Passed | Organization relue avant mutations : Developer Edition CAN96. App/layout/objet récupérés dans ui-baseline puis ui-predeploy ; comparaison identique avant le déploiement réel, aucune modification concurrente détectée. Aucune FlexiPage TalentFlow préexistante. |
+| UX-NATIVE-COMPARE-001 | Poste local, comparaison stricte des champs | Failed | Comparaison source/récupération signale des valeurs par défaut explicites (trackTrending=false, caseSensitive=false, deleteConstraint=SetNull). Ce n'est pas une preuve de changement du binôme. Déploiement réel ensuite limité à un staging UI sans ces champs ; seule la validation à blanc avait été lancée avec l'inventaire plus large. |
+| UX-NATIVE-DRY-001 | TFDev, 0AfgK00000Z8t5jSAB | Failed | Première validation refuse parentFieldApiName manquant dans les listes associées. Correction au parent TalentProfile__c.Id ; aucune mutation réelle par ce dry-run. |
+| UX-NATIVE-DRY-002 | TFDev, 0AfgK00000Z9DBZSA3 | Passed | Staging borné : 5 composants, Succeeded, NoTestRun ; aucun champ métier ni permission inclus. |
+| UX-NATIVE-DEPLOY-001 | TFDev, 0AfgK00000Z99kgSAB | Passed | 5 composants déployés, Succeeded. App, page, layout, objet et compact layout. Aucune logique Apex/Flow changée, pas de test Apex relancé. |
+| UX-NATIVE-ASSIGNMENT-001 | Métadonnées récupérées après déploiement | Passed | TalentFlow360 : override Large pour TalentProfile__c vers TF_TalentWorkspace ; compactLayoutAssignment TF_TalentSummary. Navigation Dossiers/Créneaux/Étapes/Tâches. Champs et validations TalentProfile identiques à la sauvegarde ; boutons existants préservés. docs/evidence/ui-workspace.json. |
+| UX-NATIVE-DISPLAY-DRY-001 | TFDev, 0AfgK00000Z8iPWSAZ | Passed | 8 composants, Succeeded : libellés de relations et colonne Dossier talent ajoutés. Accent du libellé corrigé localement avant envoi réel ; aucun changement de contrat. |
+| UX-NATIVE-DISPLAY-DEPLOY-001 | TFDev, 0AfgK00000Z9EQzSAN | Passed | Déploiement final 8 composants Succeeded, NoTestRun. Récupération après envoi : les deux lookup diffèrent de la sauvegarde uniquement par relationshipLabel ; colonne TalentProfile__c présente dans TF_ReservedSlots. |
+| UX-NATIVE-UIAPI-001 | UI API v68, opérateur connecté | Passed | related-list-info/TalentProfile__c/InterviewSlots__r et JourneySteps__r : HTTP 200, titres Entretiens et Étapes de parcours ; colonnes dates/états et ExecutionMode du parcours reconnues. Ne prouve pas la restriction sous un autre compte. |
+| UX-NATIVE-STRUCTURE-001 | Poste local | Passed | XML bien formés, scripts Python syntaxiquement valides, compact layout et sept champs de page contrôlés. Identité/approbation/satisfaction absentes des fieldItem de la FlexiPage. Aucun appel réel Agentforce relancé, contexte effectif du panneau non validé par ce contrôle statique. |
+| UX-NATIVE-BROWSER-001 | Navigateur Salesforce | NotRun | Vérifier les quatre onglets et listes réelles, l'état vide, le bandeau, le fuseau et les actions existantes sur TF-DEMO-003/001. |
+| UX-NATIVE-RESTRICTED-001 | Compte recruteur réellement restreint | NotRun | FLS/partage, absence de contexte privé dans le chat, refus RH et visibilité des composants à recetter dans le navigateur. |
+| UX-NATIVE-ACCESSIBILITY-001 | Navigateur Salesforce | NotRun | Navigation clavier, zoom 200 %, largeurs 390/768/1440 et messages de chargement/erreur non vérifiés. |

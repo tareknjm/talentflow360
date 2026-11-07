@@ -58,6 +58,10 @@
         <name>CustomTab</name>
     </types>
     <types>
+        <members>TF_TalentWorkspace</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
         <members>TF_ApproveHiring</members>
         <members>TF_CapturePulse</members>
         <members>TF_ConnectionProbe</members>

@@ -17,6 +17,7 @@ types={
     'CustomObject':('objects','*/*.object-meta.xml','.object-meta.xml'),
     'CustomPermission':('customPermissions','*.customPermission-meta.xml','.customPermission-meta.xml'),
     'CustomTab':('tabs','*.tab-meta.xml','.tab-meta.xml'),
+    'FlexiPage':('flexipages','*.flexipage-meta.xml','.flexipage-meta.xml'),
     'Flow':('flows','*.flow-meta.xml','.flow-meta.xml'),
     'Layout':('layouts','*.layout-meta.xml','.layout-meta.xml'),
     'PermissionSet':('permissionsets','*.permissionset-meta.xml','.permissionset-meta.xml'),

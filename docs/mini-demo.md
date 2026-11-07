@@ -3,6 +3,8 @@
 Durée : environ cinq minutes. Les données sont fictives. Ne pas réinitialiser le lot avant cette visite : il contient les résultats des essais réels.
 Les effectifs ci-dessous sont ceux du checkpoint ; une nouvelle saisie ou le passage quotidien peut les faire évoluer.
 
+**Nouvelle interface déployée :** suivre [l'ouverture de l'espace candidat natif](ui-ux/native-workspace.md). La fiche propose maintenant Vue d'ensemble, Préparation, Entretiens et Intégration. Les captures HTML de la maquette sont distinctes du rendu Salesforce réel.
+
 ## 1. Ouvrir l'application
 
 Dans Salesforce, quitter Setup et cliquer sur le lanceur d'applications (les neuf points), rechercher **TalentFlow 360**, puis ouvrir l'application.

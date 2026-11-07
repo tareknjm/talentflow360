@@ -2,6 +2,10 @@
 
 Statuts : `Todo`, `InProgress`, `Blocked`, `Done`.
 
+Évolution UI/UX proposée le 7 novembre : [maquette et backlog détaillé](ui-ux/README.md), avec tâches TF-080-UX-00 à 07 et TF-090-UX-01. La conception locale est livrée ; réalisation Salesforce Todo. Estimation du socle : 17 h-personnes à reprioriser dans la capacité restante ; frise LWC optionnelle 6–10 h, sans engagement automatique de la réserve.
+
+Premier incrément réalisé ensuite : UX-01/02/03 InProgress, composants natifs déployés et affectation relue, listes associées reconnues par l'UI API. Recette navigateur et compte restreint toujours à faire. [Guide de la livraison](ui-ux/native-workspace.md). UX-04/05/06/07 et TF-090-UX-01 ne sont pas annoncés terminés.
+
 | ID | Phase | Tâche | Responsable proposé | Priorité | Statut | Critère de sortie |
 |---|---:|---|---|---|---|---|
 | TF-000 | 0 | Diagnostiquer dépôt, Git, Java, CLI et VS Code | Codex / Tarek | P0 | Done | Versions et état réel consignés dans `docs/progress.md` |

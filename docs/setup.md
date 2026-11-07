@@ -139,3 +139,13 @@ Le 7 novembre : publication réussie, 16 éléments récupérés et 3 déployés
 8. Refaire les conversations sous un compte de recrutement restreint ayant accès au seul périmètre prévu. Résultat attendu : refus de dossier inaccessible et aucun accès RH induit. Statut actuel NotRun ; les tests Apex isolés ne remplacent pas cet essai.
 
 Sources : [publication Agentforce DX](https://developer.salesforce.com/docs/ai/agentforce/guide/agent-dx-nga-publish.html), [accès Employee Agent](https://help.salesforce.com/s/articleView?id=ai.agent_manage_aea_access.htm&language=en_US&type=5), [connexion Lightning](https://help.salesforce.com/s/articleView?id=ai.agent_deploy_emp_lex.htm&language=en_US&type=5). Le champ surfacesEnabled=false relu dans la version n'est pas employé comme preuve de visibilité ou d'indisponibilité du panneau ; seul l'essai utilisateur pourra conclure ici.
+
+## 12. Nouvelle fiche candidat native
+
+Premier incrément déployé le 7 novembre : voir [native-workspace.md](ui-ux/native-workspace.md) pour fichiers, preuves, sauvegardes et retour à l'affichage précédent.
+
+1. Rouvrir TalentFlow 360 depuis le lanceur puis actualiser. Résultat attendu : navigation Dossiers talents, Créneaux d'entretien, Étapes de parcours, Tâches ; une personnalisation utilisateur peut conserver un ordre différent.
+2. Ouvrir TF-DEMO-003 depuis Tous les dossiers TalentFlow. Résultat attendu : nouvelle page à quatre onglets et synthèse code/rôle/état/disponibilité. Ne pas modifier le dossier pour le faire correspondre à la maquette.
+3. Si l'ancienne page reste visible, ouvrir Object Manager → Dossier talent → Lightning Record Pages, puis TF_TalentWorkspace → Activation ; vérifier l'affectation ordinateur à TalentFlow 360 et les éventuelles affectations plus spécifiques. Résultat attendu : l'override d'application est celui relu dans la preuve ; ne pas changer le défaut de toute l'org sans vérifier les autres usages.
+4. Vérifier les onglets Entretiens et Intégration sur les dossiers existants. Résultat attendu : uniquement les listes du dossier courant, sans identité/satisfaction/approbation dans les champs de page ; aucune confusion Simulation/travail humain terminé.
+5. Refaire les contrôles avec compte recruteur restreint, clavier et zoom 200 %. Résultat attendu : droits objet/champ respectés et aucun contrôle RH induit. Consigner les observations dans test-results.md ; ces essais restent NotRun pour le moment.
