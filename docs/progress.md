@@ -4,7 +4,7 @@ Dernière mise à jour : 7 novembre 2026
 
 ## Phase courante
 
-**Reprise demandée le 7 novembre 2026 — quatre actions vérifiées dans Preview Live Test ; TalentFlow_Assistant version 1 publié et activé dans TFDev. Le checkpoint GitHub de la pause reste disponible ; les changements de reprise sont locaux.**
+**Reprise demandée le 7 novembre 2026 — quatre actions vérifiées dans Preview Live Test ; TalentFlow_Assistant version 1 publié et activé dans TFDev. Checkpoint de reprise 364a96a poussé sur GitHub/main ; checkpoint de pause conservé dans l'historique.**
 
 ### Réalisé
 
@@ -25,6 +25,7 @@ Dernière mise à jour : 7 novembre 2026
 - Passage quotidien définitif observé : TF_JourneyDaily TimesTriggered=1, PreviousFireTime=2026-11-07T16:00:11.162Z ; PreArrival exécuté en Scheduled à 16:00:15Z. Le test Once J+1 reste une preuve distincte.
 - Formulation initiale du suivi trop vague (« prévisualisation ») corrigée puis retestée : les simulations créent de vraies tâches synthétiques ; Pending ne signifie pas exécuté. Les deux sessions de cette reprise sont fermées.
 - Brief TF-DEMO-003 également appelé réellement depuis le runtime publié, distinct du Preview de brouillon. Preuve agent-published-brief.json ; ce runtime n'inscrit pas mockMode dans ses métadonnées, contrairement au Preview Live Test. Sa session est fermée également.
+- Checkpoint métier 364a96a poussé sans force sur origin/main ; index contrôlé sans session/authentification/résultat temporaire ni motif de credential détecté. Le présent bilan documentaire accompagne cette publication Git.
 
 ### Bloqué ou non encore vérifié
 
