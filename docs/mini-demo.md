@@ -1,6 +1,7 @@
 # Petite démonstration — point du 7 novembre 2026
 
 Durée : environ cinq minutes. Les données sont fictives. Ne pas réinitialiser le lot avant cette visite : il contient les résultats des essais réels.
+Les effectifs ci-dessous sont ceux du checkpoint ; une nouvelle saisie ou le passage quotidien peut les faire évoluer.
 
 ## 1. Ouvrir l'application
 

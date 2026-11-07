@@ -4,14 +4,14 @@ Dernière mise à jour : 7 novembre 2026
 
 ## Phase courante
 
-**Point de démonstration — pause de développement demandée par l'utilisateur le 7 novembre 2026. Préparation du push GitHub en cours.**
+**Point de démonstration — développement en pause à la demande de l'utilisateur le 7 novembre 2026. Checkpoint publié sur GitHub, branche main.**
 
 ### Réalisé
 
 - Socle Salesforce et quatre actions métier déployés ; six profils, six identités fictives et huit créneaux.
 - Six Flows actifs : validation RH, satisfaction, synchronisation, alerte, simulation et échéances quotidiennes.
 - Preuve Agentforce réelle sur la sonde en Preview Live Test ; bundle Employee local non encore publié.
-- Guide de visite dans `docs/mini-demo.md`. Commit initial `63f70d9` ; checkpoint de pause à enregistrer et pousser vers `https://github.com/tareknjm/talentflow360`.
+- Guide de visite dans `docs/mini-demo.md`. Commit initial `63f70d9` puis checkpoint `c1a98ef` poussés vers `https://github.com/tareknjm/talentflow360`, branche main.
 
 ### Vérifié
 
@@ -26,14 +26,15 @@ Dernière mise à jour : 7 novembre 2026
 
 ### Prochaine action
 
-Terminer le checkpoint GitHub puis faire la petite démonstration dans l'application. Reprendre le raccordement métier Agentforce seulement à la demande de l'utilisateur.
+Faire la petite démonstration dans l'application : lanceur Salesforce → TalentFlow 360 → Dossiers talents → Tous les dossiers TalentFlow → TF-DEMO-001. Reprendre le raccordement métier Agentforce seulement à la demande de l'utilisateur.
 
 ### Préparation GitHub et démo
 
 - Réalisé : guide de cinq minutes, deux vues Tous les dossiers/Toutes les étapes et manifeste complet du backend ; session Preview de test fermée proprement après export de la preuve.
 - Vérifié : les deux vues sont déployées ; TF-DEMO-001 est Hired avec six étapes, deux réponses synthétiques et cinq tâches. Conversion locale du manifeste réussie sans avertissement. Dépôt GitHub tareknjm/talentflow360 vide, branche par défaut main et accès push confirmés.
-- Bloqué : aucune nouvelle fonction métier engagée pendant la pause. Le résultat distant du push reste à confirmer après envoi.
-- Prochaine action : commit du checkpoint, push sans force sur main et comparaison du SHA distant avec le SHA local.
+- Vérifié après envoi : checkpoint c1a98ef poussé sans force sur main ; contenu local conservé, dépôt distant initialement vide. Les fichiers d'authentification, sessions et logs sont exclus ; contrôle local des XML/API 68 et empreinte de la preuve de sonde réussi.
+- Bloqué : aucune nouvelle fonction métier engagée pendant la pause ; les éléments non vérifiés listés plus haut restent ouverts.
+- Prochaine action : visite guidée de cinq minutes ; le commit documentaire de bilan accompagne le checkpoint sur main.
 
 ## Historique de séance
 
