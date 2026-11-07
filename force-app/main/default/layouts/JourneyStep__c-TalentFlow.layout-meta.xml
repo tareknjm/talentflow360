@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layoutSections><customLabel>true</customLabel><detailHeading>true</detailHeading><editHeading>true</editHeading><label>Informations</label><layoutColumns><layoutItems><behavior>Readonly</behavior><field>Name</field></layoutItems><layoutItems><behavior>Edit</behavior><field>AssignedTo__c</field></layoutItems><layoutItems><behavior>Edit</behavior><field>DemoBatch__c</field></layoutItems><layoutItems><behavior>Required</behavior><field>DispatchStatus__c</field></layoutItems><layoutItems><behavior>Required</behavior><field>DueDate__c</field></layoutItems><layoutItems><behavior>Edit</behavior><field>MessagePreview__c</field></layoutItems><layoutItems><behavior>Required</behavior><field>Stage__c</field></layoutItems><layoutItems><behavior>Required</behavior><field>Status__c</field></layoutItems><layoutItems><behavior>Required</behavior><field>StepKey__c</field></layoutItems><layoutItems><behavior>Required</behavior><field>TalentProfile__c</field></layoutItems></layoutColumns><style>OneColumn</style></layoutSections>
+    <showEmailCheckbox>false</showEmailCheckbox>
+    <showHighlightsPanel>false</showHighlightsPanel>
+    <showInteractionLogPanel>false</showInteractionLogPanel>
+    <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
+    <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
+</Layout>

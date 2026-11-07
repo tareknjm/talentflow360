@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ReservationConsistency</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(AND(ISPICKVAL(Status__c, "Reserved"), OR(ISBLANK(TalentProfile__c), ISBLANK(ReservationKey__c))), AND(ISPICKVAL(Status__c, "Available"), OR(NOT(ISBLANK(TalentProfile__c)), NOT(ISBLANK(ReservationKey__c)))))</errorConditionFormula>
+    <errorMessage>Un créneau réservé exige un dossier et une clé ; un créneau libre ne les conserve pas.</errorMessage>
+</ValidationRule>

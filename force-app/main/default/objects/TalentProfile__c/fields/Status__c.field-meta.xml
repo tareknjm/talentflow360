@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <label>État du dossier</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet><restricted>true</restricted><valueSetDefinition><sorted>false</sorted>
+        <value><fullName>Draft</fullName><default>true</default><label>Draft</label></value>
+        <value><fullName>ReadyForReview</fullName><default>false</default><label>ReadyForReview</label></value>
+        <value><fullName>InterviewRequested</fullName><default>false</default><label>InterviewRequested</label></value>
+        <value><fullName>InterviewScheduled</fullName><default>false</default><label>InterviewScheduled</label></value>
+        <value><fullName>Hired</fullName><default>false</default><label>Hired</label></value>
+    </valueSetDefinition></valueSet>
+
+</CustomField>

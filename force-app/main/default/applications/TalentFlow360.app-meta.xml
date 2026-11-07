@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Démonstrateur RH sur données synthétiques.</description>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>TalentFlow 360</label>
+    <navType>Standard</navType>
+    <tabs>CandidateIdentity__c</tabs>
+    <tabs>TalentProfile__c</tabs>
+    <tabs>InterviewSlot__c</tabs>
+    <tabs>JourneyStep__c</tabs>
+    <tabs>PulseResponse__c</tabs>
+    <tabs>AgentAudit__c</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

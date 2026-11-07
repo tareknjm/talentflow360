@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ScoreRange</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(Score__c &lt; 1, Score__c &gt; 5, MOD(Score__c, 1) &lt;&gt; 0)</errorConditionFormula>
+    <errorMessage>La satisfaction doit être un entier compris entre 1 et 5.</errorMessage>
+</ValidationRule>

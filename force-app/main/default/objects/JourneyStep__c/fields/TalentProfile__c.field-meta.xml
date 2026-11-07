@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TalentProfile__c</fullName>
+    <label>Dossier talent</label>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <referenceTo>TalentProfile__c</referenceTo>
+    <relationshipLabel>JourneySteps</relationshipLabel>
+    <relationshipName>JourneySteps</relationshipName>
+    <required>true</required>
+    <type>Lookup</type>
+
+</CustomField>

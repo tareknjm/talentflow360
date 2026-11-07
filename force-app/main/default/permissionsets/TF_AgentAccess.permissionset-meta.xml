@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses><apexClass>TF_GetCandidateBrief</apexClass><enabled>true</enabled></classAccesses>
+    <classAccesses><apexClass>TF_ListInterviewSlots</apexClass><enabled>true</enabled></classAccesses>
+    <classAccesses><apexClass>TF_ReserveInterview</apexClass><enabled>true</enabled></classAccesses>
+    <classAccesses><apexClass>TF_GetOnboardingStatus</apexClass><enabled>true</enabled></classAccesses>
+    <fieldPermissions><editable>true</editable><field>InterviewSlot__c.ReservationKey__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>InterviewSlot__c.TalentProfile__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>JourneyStep__c.AssignedTo__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>TalentProfile__c.Availability__c</field><readable>true</readable></fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Actions minimisées TalentFlow</label>
+    <objectPermissions><allowCreate>false</allowCreate><allowDelete>false</allowDelete><allowEdit>true</allowEdit><allowRead>true</allowRead><modifyAllRecords>false</modifyAllRecords><object>InterviewSlot__c</object><viewAllRecords>false</viewAllRecords></objectPermissions>
+    <objectPermissions><allowCreate>false</allowCreate><allowDelete>false</allowDelete><allowEdit>false</allowEdit><allowRead>true</allowRead><modifyAllRecords>false</modifyAllRecords><object>JourneyStep__c</object><viewAllRecords>false</viewAllRecords></objectPermissions>
+    <objectPermissions><allowCreate>false</allowCreate><allowDelete>false</allowDelete><allowEdit>true</allowEdit><allowRead>true</allowRead><modifyAllRecords>false</modifyAllRecords><object>TalentProfile__c</object><viewAllRecords>false</viewAllRecords></objectPermissions>
+
+</PermissionSet>
