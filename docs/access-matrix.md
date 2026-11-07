@@ -30,4 +30,4 @@ Ni la custom permission ni le service Apex ne prouvent seuls qu'une personne a c
 4. RH autorisé : transition via parcours distinct et acteur/date corrects ; écriture forgée refusée.
 5. Actions agent : aucune restitution d'identité, satisfaction, champ d'approbation ou note privée.
 
-Statut : matrice préparée ; tests des droits effectifs encore NotRun.
+Statut au checkpoint : TF_AccessTest a exécuté les refus de partage, les FLS interdits à l'agent et la validation RH avec des utilisateurs Minimum Access - Salesforce. Le Preview Employee utilise le compte opérateur connecté (administrateur + rôles de démonstration) : aucune identité technique séparée n'est revendiquée. Sa seule action configurée est la sonde ; les quatre sorties métier sont testées directement mais pas encore exposées dans la conversation. Les clics UI restent NotRun.

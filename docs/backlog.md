@@ -8,20 +8,20 @@ Statuts : `Todo`, `InProgress`, `Blocked`, `Done`.
 | TF-001 | 0 | Réauthentifier l'org de développement `TFDev` | Tarek | P0 | Done | `sf data query` réussit sur `Organization` sans exposer de secret |
 | TF-002 | 0 | Créer le cadrage local initial | Codex | P0 | Done | README, AGENTS, progression, backlog, setup, modèle et décisions présents |
 | TF-010 | 1 | Construire le Flow autolaunched `TF_ConnectionProbe` | Binôme / Codex | P0 | Done | Entrée `candidateCode`, sortie `safeSummary`, déploiement réussi |
-| TF-011 | 1 | Vérifier activation, licence et permissions Agentforce | Tarek | P0 | InProgress | Accès réel observé et résultat consigné |
-| TF-012 | 1 | Appeler `TF_ConnectionProbe` depuis un agent de test | Tarek / Codex | P0 | Todo | L'appel d'action est observable dans Preview et retourne la sortie réelle |
+| TF-011 | 1 | Vérifier activation, licence et permissions Agentforce | Tarek | P0 | Done | Builder accessible et Preview Employee réellement démarré |
+| TF-012 | 1 | Appeler `TF_ConnectionProbe` depuis un agent de test | Tarek / Codex | P0 | Done | Preuve Live Test et FunctionStep dans docs/evidence/agent-probe.json |
 | TF-020 | 2 | Créer les six objets et leurs validations | Tarek | P0 | Done | Déploiement réel 0AfgK00000Z4L1hSAF et 9 tests réussis |
 | TF-021 | 2 | Créer six profils synthétiques et des créneaux | Binôme | P1 | InProgress | Seed répété et effectifs vérifiés ; consultation UI à constater |
-| TF-030 | 3 | Définir permission sets et matrice d'accès | Tarek | P0 | InProgress | Lecture restreinte refusée et droits effectifs documentés |
-| TF-040 | 4 | Implémenter le brief candidat minimisé | Tarek | P0 | InProgress | Sortie sans identité, erreurs contrôlées, tests réussis |
-| TF-041 | 4 | Lister et réserver les créneaux de façon idempotente | Tarek | P0 | InProgress | Libre/occupé/passé/répété testés, concurrence réelle requise |
+| TF-030 | 3 | Définir permission sets et matrice d'accès | Tarek | P0 | Done | Droits minimaux et partage exercés par TF_AccessTest ; contexte Employee partagé documenté |
+| TF-040 | 4 | Implémenter le brief candidat minimisé | Tarek | P0 | Done | Tests minimaux et appel direct réel, liste blanche sans identité |
+| TF-041 | 4 | Lister et réserver les créneaux de façon idempotente | Tarek | P0 | Done | Libre/occupé/passé/répété testés ; deux transactions concurrentes, une seule réservation |
 | TF-050 | 5 | Configurer `TalentFlow Assistant` | Binôme / Tarek | P0 | Todo | Actions réelles appelées et refus métier cohérents |
-| TF-060 | 6 | Créer le Screen Flow de validation RH | Binôme | P0 | Todo | RH autorisé accepté, autre acteur refusé, acteur/date enregistrés |
-| TF-070 | 7 | Générer le parcours J-7 à J+90 sans doublon | Binôme / Tarek | P0 | Todo | Six étapes cohérentes, replanification testée |
-| TF-071 | 7 | Saisir la satisfaction et créer l'alerte RH | Binôme | P1 | Todo | Score 1/5 crée une seule alerte, 4/5 n'en crée pas |
-| TF-080 | 8 | Construire les vues Lightning et KPI factuels | Binôme | P1 | Todo | Parcours compréhensible sans jargon technique |
-| TF-090 | 9 | Exécuter la recette sécurité, métier et IA responsable | Les deux | P0 | Todo | Résultats réels consignés avec preuves et limites |
-| TF-100 | 10 | Préparer démo, reset et solution de secours | Les deux | P0 | Todo | Démo répétée, reset essayé deux fois, version gelée |
+| TF-060 | 6 | Créer le Screen Flow de validation RH | Binôme | P0 | InProgress | Flow actif, service autorisé/refusé testé ; clics UI à recetter |
+| TF-070 | 7 | Générer le parcours J-7 à J+90 sans doublon | Binôme / Tarek | P0 | Done | Six étapes, replanification et vraie échéance Once vérifiées ; passage quotidien à surveiller |
+| TF-071 | 7 | Saisir la satisfaction et créer l'alerte RH | Binôme | P1 | InProgress | 1/5 et 4/5 exercés dans l'org, alerte unique ; écran à recetter |
+| TF-080 | 8 | Construire les vues Lightning et KPI factuels | Binôme | P1 | InProgress | Application/listes/layouts déployés ; visite humaine et suivi visuel à valider |
+| TF-090 | 9 | Exécuter la recette sécurité, métier et IA responsable | Les deux | P0 | InProgress | 18 tests complets et 5 ciblés réussis ; conversations métier et mesures restantes |
+| TF-100 | 10 | Préparer démo, reset et solution de secours | Les deux | P0 | InProgress | Petite démo prête ; resets réels, vidéo et gel final non exécutés |
 
 ## Affectation aux sprints et charges
 
@@ -60,4 +60,4 @@ Voir `sprints.md` pour dates, capacités et réserves. Les charges ci-dessous so
 | S5 | TF-100-C | Slides et vidéo locale | Binôme | Tarek | 4 | TF-100-B | Secours accessible hors réseau |
 | S5 | TF-100-D | Répétitions et contrôle matériel | Les deux | Les deux | 4 | TF-100-C | Parcours expliqué par chacun |
 
-État d'implémentation : socle de 83 composants déployé et 9 tests réussis ; six profils/six identités/huit créneaux créés après deux seeds. Actions métier en validation ; UI et Preview non encore testés. Aucune tâche métier n'est déclarée Done sur la seule génération de ses fichiers.
+État du checkpoint : socle, actions directes et parcours déployés/testés ; sonde Agentforce réellement invoquée en Preview, bundle non publié et actions métier non encore raccordées. Pause demandée pour petite démo et push GitHub. Les critères UI non exercés restent InProgress, sans bloquer l'enregistrement du checkpoint.

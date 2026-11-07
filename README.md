@@ -4,7 +4,13 @@ TalentFlow 360 est un démonstrateur Salesforce de parcours RH interne. Le MVP c
 
 ## État actuel
 
-Le socle métier est déployé dans **TFDev, Developer Edition** : six objets, navigation standard, droits et protection d'approbation. Neuf tests ont réussi et le seed répété conserve six profils, six identités fictives et huit créneaux. Les actions métier sont en validation séparée. Le Flow technique `TF_ConnectionProbe` est déployé et exécuté directement avec succès ; son appel depuis Agentforce reste à prouver.
+**Point de démonstration du 7 novembre 2026 — développement en pause à la demande de l'utilisateur.**
+
+Le socle et les quatre actions métier sont déployés dans **TFDev, Developer Edition**. Le parcours J−7 à J+90, la replanification et l'alerte de satisfaction ont été exécutés sur données fictives. La dernière suite complète compte **18 tests Apex réussis**, puis **5 tests ciblés réussis** après ajout de l'indicateur de simulation. La réservation a aussi été vérifiée par deux transactions réellement concurrentes et une vraie échéance Flow a été observée.
+
+**Agentforce a réellement appelé la sonde TF_ConnectionProbe dans un Preview Live Test.** Le bundle Employee reste local : il n'est pas encore publié/activé dans Lightning, et ses quatre actions métier ne sont pas encore raccordées.
+
+Commencer par la [petite démonstration guidée](docs/mini-demo.md). Les [résultats réels](docs/test-results.md) distinguent les tests réussis, échoués et non exécutés.
 
 Le suivi factuel se trouve dans [docs/progress.md](docs/progress.md).
 
@@ -38,7 +44,9 @@ sf.cmd --version
 sf.cmd org list
 ```
 
-La sonde est déjà déployée selon les résultats consignés. La prochaine preuve attendue est son appel observable depuis Agentforce Preview. La lecture de TFDev a de nouveau réussi le 7 novembre 2026.
+L'application se trouve dans le lanceur Salesforce sous **TalentFlow 360**. Le jeu actuel contient six profils, six identités fictives et huit créneaux ; TF-DEMO-001 porte les résultats du parcours testé. Le seed est répétable et n'écrase pas les essais en cours.
+
+`manifest/package.xml` inventorie le socle Salesforce ; `manifest/probe.xml` conserve la sonde initiale. La configuration Agentforce suit un workflow de compilation/Preview puis publication distinct. Une installation complète sur org neuve n'a pas été testée.
 
 Le calendrier accepté est dans [docs/sprints.md](docs/sprints.md). Consulter la progression pour distinguer les fichiers préparés, les composants déployés et les fonctions testées.
 
@@ -49,7 +57,10 @@ Le calendrier accepté est dans [docs/sprints.md](docs/sprints.md). Consulter la
 - [Installation et manipulations](docs/setup.md)
 - [Modèle de données](docs/data-model.md)
 - [Décisions](docs/decisions.md)
+- [Démo de cinq minutes](docs/mini-demo.md)
+- [Contrats et preuve Agentforce](docs/agent-actions.md)
+- [Sprints](docs/sprints.md)
 
 ## Limites actuelles
 
-L'accès au nouveau Builder a été constaté sur les captures utilisateur ; aucune invocation Preview n'est encore prouvée. Les droits minimaux sont testés par Apex, mais l'interface, l'agent et les automatismes du parcours nécessitent leurs propres preuves. Une fonctionnalité ne sera marquée comme terminée qu'après déploiement et test réel.
+Le Preview de diagnostic est prouvé, mais les conversations métier et le canal Lightning restent à réaliser. Les écrans sont actifs et les layouts Admin sont affectés ; leurs clics humains restent à recetter. Les deux resets sur jeu réel, les mesures de valeur, la vidéo et la reconstruction sur org neuve ne sont pas encore validés. Aucun gain métier ni conformité n'est revendiqué.

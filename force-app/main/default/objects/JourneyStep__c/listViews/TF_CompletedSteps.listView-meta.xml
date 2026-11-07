@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+<fullName>TF_CompletedSteps</fullName><columns>NAME</columns><columns>TalentProfile__c</columns><columns>Stage__c</columns><columns>ExecutionMode__c</columns><columns>ExecutedAt__c</columns><filterScope>Everything</filterScope><filters><field>Status__c</field><operation>equals</operation><value>Completed</value></filters><label>Étapes exécutées</label>
+</ListView>

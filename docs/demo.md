@@ -1,6 +1,6 @@
 # Démonstration et transfert
 
-Statut : préparation ; parcours métier et vidéo non encore validés.
+Statut : démonstration finale en préparation. Pour la pause actuelle, utiliser [la petite démo du 7 novembre](mini-demo.md), qui ne suppose pas un assistant métier déjà publié. Le parcours serveur est vérifié ; les clics UI et la vidéo ne sont pas encore validés.
 
 ## Parcours de trois minutes
 

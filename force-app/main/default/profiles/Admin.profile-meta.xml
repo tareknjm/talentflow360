@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layoutAssignments><layout>AgentAudit__c-TalentFlow</layout></layoutAssignments>
+    <layoutAssignments><layout>CandidateIdentity__c-TalentFlow</layout></layoutAssignments>
+    <layoutAssignments><layout>InterviewSlot__c-TalentFlow</layout></layoutAssignments>
+    <layoutAssignments><layout>JourneyStep__c-TalentFlow</layout></layoutAssignments>
+    <layoutAssignments><layout>PulseResponse__c-TalentFlow</layout></layoutAssignments>
+    <layoutAssignments><layout>TalentProfile__c-TalentFlow</layout></layoutAssignments>
+</Profile>

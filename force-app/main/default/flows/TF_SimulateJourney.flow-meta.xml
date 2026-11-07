@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Simulate_Step</name>
+        <label>Simulate_Step</label>
+        <locationX>50</locationX>
+        <locationY>200</locationY>
+        <actionName>TF_SimulateJourney</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Check_Result</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Failure_Screen</targetReference>
+        </faultConnector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>stepId</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+        <outputParameters>
+            <assignToReference>resultCode</assignToReference>
+            <name>resultCode</name>
+        </outputParameters>
+    </actionCalls>
+    <apiVersion>68.0</apiVersion>
+    <decisions>
+        <name>Check_Authorization</name>
+        <label>Vérifier l’autorisation</label>
+        <locationX>50</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>Denied_Screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Non autorisé</defaultConnectorLabel>
+        <rules>
+            <name>Authorized</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Permission.TF_DemoTools</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Input_Screen</targetReference>
+            </connector>
+            <label>Autorisé</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Result</name>
+        <label>Vérifier la simulation</label>
+        <locationX>50</locationX>
+        <locationY>250</locationY>
+        <defaultConnector>
+            <targetReference>Failure_Screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Non exécutée</defaultConnectorLabel>
+        <rules>
+            <name>Success</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>resultCode</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>SUCCESS</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>resultCode</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>ALREADY_COMPLETED</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Result_Screen</targetReference>
+            </connector>
+            <label>Exécutée ou déjà traitée</label>
+        </rules>
+    </decisions>
+    <description>Parcours interne distinct, jamais exposé à Agentforce.</description>
+    <interviewLabel>TF — Simulation J+30 / J+60 / J+90 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>TF — Simulation J+30 / J+60 / J+90</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Input_Screen</name>
+        <label>Simulation du parcours</label>
+        <locationX>50</locationX>
+        <locationY>300</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Simulate_Step</targetReference>
+        </connector>
+        <fields>
+            <name>Simulation_Warning</name>
+            <fieldText>&lt;p&gt;SIMULATION J+30 / J+60 / J+90 — uniquement sur les données de démonstration. Les tâches seront réellement créées ; ceci ne prouve pas l’exécution à une échéance future.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Result_Screen</name>
+        <label>Simulation — résultat</label>
+        <locationX>50</locationX>
+        <locationY>300</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Simulation_Result</name>
+            <fieldText>&lt;p&gt;Simulation terminée ou étape déjà traitée. Consultez les tâches et le mode d’exécution sur l’étape. Ceci ne prouve pas une échéance future.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Denied_Screen</name>
+        <label>Simulation non autorisée</label>
+        <locationX>50</locationX>
+        <locationY>300</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Simulation_Denied</name>
+            <fieldText>&lt;p&gt;Les outils de démonstration sont réservés aux opérateurs autorisés.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Failure_Screen</name>
+        <label>Traitement interrompu</label>
+        <locationX>300</locationX>
+        <locationY>400</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Failure_Message</name>
+            <fieldText>&lt;p&gt;Le traitement a été interrompu. Aucun succès ne peut être confirmé ; vérifiez le dossier avant de réessayer.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Authorization</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>resultCode</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -2,7 +2,7 @@
 
 ## TF_ConnectionProbe
 
-Statut : **Deployed / ActiveVersion1 / DirectRunPassed / AgentInvocationNotRun**
+Statut : **Deployed / ActiveVersion1 / DirectRunPassed / AgentLivePreviewPassed**
 
 Objectif : prouver qu'un agent peut invoquer une véritable action Salesforce basée sur un Flow. Cette sonde n'est pas une fonctionnalité RH et ne doit pas être présentée comme telle.
 
@@ -31,7 +31,15 @@ TalentFlow connection probe completed. Synthetic diagnostic output only.
 - Aucun objet Salesforce métier n'est lu ou modifié.
 - Aucune identité, adresse email ou donnée RH n'entre dans le contexte.
 - Le Flow est déployé et son exécution directe est validée.
-- La création de l'action Agentforce et le test Preview restent `NotRun`.
+- Le 7 novembre 2026, Preview CLI avec `--use-live-actions` : trace FunctionStep `connection_probe`, candidateCode=TF-PROBE-001, statut d'exécution success et safeSummary exact. Mode de session `Live Test` vérifié. Preuve expurgée : `docs/evidence/agent-probe.json`.
+- Bundle Employee non encore publié à cette étape ; la preuve concerne la vraie exécution du Flow dans Preview, pas un canal Lightning activé.
+
+### Particularités réellement constatées
+
+- La locale Agent Script française est `fr` (distincte de la locale Apex fr_FR). fr_FR produisait HTTP 422 ; fr compile.
+- Le SDK installé appelle replace sur defaultAgentUser sans vérifier sa présence. Le marqueur technique `access.default_agent_user: "INVALID"` permet le Preview avec bypassUser=false ; aucun username réel n'est inscrit. L'agent Employee reste dans le contexte du compte connecté, sans identité technique distincte démontrée.
+- Aucune variable liée à Contact, MessagingEndUser, CurrentRecord, mémoire ou profil utilisateur n'est ajoutée. Le seul outil de la première version est la sonde.
+- Configuration de cette preuve archivée dans `scripts/agentforce/connection-probe.agent` ; pas de réponse statique présentée comme intégration.
 
 ## Contrats métier retenus avant implémentation
 
@@ -43,7 +51,7 @@ Chaque invocation accepte au plus dix demandes et retourne un résultat par dema
 | TF_GetCandidateBrief | candidateCode | candidateCode, role, javaEvidence, springEvidence, availability, missingInformation |
 | TF_ListInterviewSlots | candidateCode, periodStart, periodEnd (DateTime) | slots : slotId, start, end |
 | TF_ReserveInterview | candidateCode, slotId, requestKey, confirmed | slotId, start, end |
-| TF_GetOnboardingStatus | candidateCode | steps : stage, dueDate, status ; nextTasks : stage, dueDate |
+| TF_GetOnboardingStatus | candidateCode | steps : stage, dueDate, status, executionMode ; nextTasks : stage, dueDate |
 
 Codes : SUCCESS, INVALID_INPUT, NOT_AVAILABLE_OR_NOT_ACCESSIBLE, SLOT_UNAVAILABLE, ALREADY_RESERVED, TECHNICAL_FAILURE. Un dossier absent et un dossier inaccessible produisent le même résultat. Les données absentes restent nulles ou signalées comme à vérifier.
 Période de créneaux strictement positive et au plus 31 jours, 20 résultats au maximum, futur uniquement. Codes candidats limités à 30 caractères alphanumériques, tirets et underscores ; clés de répétition non vides, au plus 80 caractères.

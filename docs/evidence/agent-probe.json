@@ -1,0 +1,21 @@
+{
+  "observedAtUtc": "2026-11-07T03:42:57.835429+00:00",
+  "target": "TFDev Developer Edition CAN96",
+  "apiVersion": "68.0",
+  "agentType": "AgentforceEmployeeAgent",
+  "mode": "Live Test",
+  "sessionStartedAtUtc": "2026-11-07T03:40:23.316Z",
+  "configurationSha256": "8faeb53690a2ceafe7c12660e4afd542b8a93a3312a248488e9ceee5ca50ef60",
+  "invocations": [
+    {
+      "action": "connection_probe",
+      "inputs": {
+        "candidateCode": "TF-PROBE-001"
+      },
+      "executionStatus": "success",
+      "outputs": {
+        "safeSummary": "TalentFlow connection probe completed. Synthetic diagnostic output only."
+      }
+    }
+  ]
+}

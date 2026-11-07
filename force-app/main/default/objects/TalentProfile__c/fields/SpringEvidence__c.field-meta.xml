@@ -1,13 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>SpringEvidence__c</fullName>
     <label>Preuve Spring</label>
     <required>true</required>
     <type>Picklist</type>
-    <valueSet><restricted>true</restricted><valueSetDefinition><sorted>false</sorted>
-        <value><fullName>NotProvided</fullName><default>true</default><label>NotProvided</label></value>
-        <value><fullName>DeclaredProject</fullName><default>false</default><label>DeclaredProject</label></value>
-        <value><fullName>RecordedAssessment</fullName><default>false</default><label>RecordedAssessment</label></value>
-    </valueSetDefinition></valueSet>
-
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>NotProvided</fullName>
+                <default>true</default>
+                <label>Non fournie</label>
+            </value>
+            <value>
+                <fullName>DeclaredProject</fullName>
+                <default>false</default>
+                <label>Projet déclaré</label>
+            </value>
+            <value>
+                <fullName>RecordedAssessment</fullName>
+                <default>false</default>
+                <label>Évaluation consignée</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
 </CustomField>

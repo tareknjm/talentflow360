@@ -79,8 +79,8 @@ public with sharing class TF_AgentService {
         if (action == 'TF_GetOnboardingStatus') {
             List<Object> steps = new List<Object>();
             List<Object> nextTasks = new List<Object>();
-            for (JourneyStep__c step : [SELECT Stage__c, DueDate__c, Status__c FROM JourneyStep__c WHERE TalentProfile__c=:profile.Id WITH USER_MODE ORDER BY DueDate__c, Id LIMIT 100]) {
-                steps.add(new Map<String,Object>{'stage'=>step.Stage__c,'dueDate'=>step.DueDate__c,'status'=>step.Status__c});
+            for (JourneyStep__c step : [SELECT Stage__c, DueDate__c, Status__c, ExecutionMode__c FROM JourneyStep__c WHERE TalentProfile__c=:profile.Id WITH USER_MODE ORDER BY DueDate__c, Id LIMIT 100]) {
+                steps.add(new Map<String,Object>{'stage'=>step.Stage__c,'dueDate'=>step.DueDate__c,'status'=>step.Status__c,'executionMode'=>step.ExecutionMode__c});
                 if (step.Status__c=='Pending' && nextTasks.size()<6) nextTasks.add(new Map<String,Object>{'stage'=>step.Stage__c,'dueDate'=>step.DueDate__c});
             }
             return new TF_ActionResult('SUCCESS', new Map<String,Object>{'steps'=>steps,'nextTasks'=>nextTasks});

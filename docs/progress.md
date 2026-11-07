@@ -4,7 +4,40 @@ Dernière mise à jour : 7 novembre 2026
 
 ## Phase courante
 
-**Phase 1 — preuve Agentforce minimale**
+**Point de démonstration — pause de développement demandée par l'utilisateur le 7 novembre 2026. Préparation du push GitHub en cours.**
+
+### Réalisé
+
+- Socle Salesforce et quatre actions métier déployés ; six profils, six identités fictives et huit créneaux.
+- Six Flows actifs : validation RH, satisfaction, synchronisation, alerte, simulation et échéances quotidiennes.
+- Preuve Agentforce réelle sur la sonde en Preview Live Test ; bundle Employee local non encore publié.
+- Guide de visite dans `docs/mini-demo.md`. Commit initial `63f70d9` ; checkpoint de pause à enregistrer et pousser vers `https://github.com/tareknjm/talentflow360`.
+
+### Vérifié
+
+- Dernière suite complète : 18 tests Apex réussis. Dernière modification de sortie (Scheduled/Simulation) : déploiement 0AfgK00000Z44LqSAJ réussi et 5 tests d'actions réussis.
+- Réservation concurrente réelle : une seule réservation ; parcours et alerte exercés dans l'org ; Flow Once réellement déclenché, distinct des simulations.
+- Mode Live Test et FunctionStep connection_probe avec sa sortie réelle ; preuve expurgée dans `docs/evidence/agent-probe.json`.
+
+### Bloqué ou non encore vérifié
+
+- Quatre actions métier non encore raccordées à Agentforce ; publication/activation Lightning non effectuées.
+- Clics humains des Screen Flows, resets du jeu réel, mesures et vidéo non exécutés. Le passage quotidien reste à observer ; un passage Once du même service est déjà prouvé.
+
+### Prochaine action
+
+Terminer le checkpoint GitHub puis faire la petite démonstration dans l'application. Reprendre le raccordement métier Agentforce seulement à la demande de l'utilisateur.
+
+### Préparation GitHub et démo
+
+- Réalisé : guide de cinq minutes, deux vues Tous les dossiers/Toutes les étapes et manifeste complet du backend ; session Preview de test fermée proprement après export de la preuve.
+- Vérifié : les deux vues sont déployées ; TF-DEMO-001 est Hired avec six étapes, deux réponses synthétiques et cinq tâches. Conversion locale du manifeste réussie sans avertissement. Dépôt GitHub tareknjm/talentflow360 vide, branche par défaut main et accès push confirmés.
+- Bloqué : aucune nouvelle fonction métier engagée pendant la pause. Le résultat distant du push reste à confirmer après envoi.
+- Prochaine action : commit du checkpoint, push sans force sur main et comparaison du SHA distant avec le SHA local.
+
+## Historique de séance
+
+Les états ci-dessous décrivent leur instant d'observation et peuvent être dépassés par le bilan courant ci-dessus.
 
 ## Réalisé et vérifié
 
@@ -132,3 +165,45 @@ Ouvrir manuellement `TFDev`, aller dans Setup et rechercher `Agentforce Agents` 
 - Vérifié : 14 tests réussis, zéro erreur/alerte de couverture. checkBusinessActions.apex compile et s'exécute réellement : brief incomplet, sorties autorisées, liste des créneaux, refus sans confirmation et lecture du parcours.
 - Bloqué : configuration/invocation de l'assistant dans Preview, concurrence réelle et recette UI restent NotRun.
 - Prochaine action : test concurrent réel borné aux profils de démonstration, puis écrans RH et automatisation du parcours ; ne pas présenter les appels Apex directs comme une intégration Agentforce.
+
+## Écrans RH et parcours — préparation
+
+- Réalisé : sources de trois Screen Flows (validation RH, satisfaction et simulation), deux Flows après sauvegarde et un Flow quotidien, services de parcours et alerte, boutons d'action standard.
+- Vérifié : premier dry-run 0AfgK00000Z45eVSAR compile les services, mais refuse deux métadonnées Flow : case booléenne obligatoire et filtre Start référençant CurrentDate. Corrigés par case requise et formule IsDue__c. Le fuseau de l'org a été lu : America/Los_Angeles ; il n'a pas été modifié.
+- Bloqué : ces nouvelles fonctions ne sont pas encore déployées/testées ; écrans non observés. La planification réelle reste NotRun.
+- Prochaine action : lire la nouvelle validation complète. Le test de concurrence des réservations déployées est lancé séparément sur le seul lot synthétique.
+
+### Concurrence réellement testée
+
+- Réalisé : deux appels Apex concurrents à TF_ReserveInterview sur les dossiers synthétiques 001/002 et SLOT-1.
+- Vérifié : chevauchement des intervalles serveur, un SUCCESS et un SLOT_UNAVAILABLE, une seule réservation finale. Données hors lot non utilisées. Voir RESERVATION-CONCURRENCY-001.
+- Bloqué : la CLI a dépassé son attente sur la validation des Flows ; le job continue et son résultat n'est pas encore conclu.
+- Prochaine action : récupérer le rapport final avant toute annonce de réussite des automatismes ou déploiement.
+
+### Validation complète avant déploiement du parcours
+
+- Réalisé : Screen Flows avec confirmation, gestion des erreurs et boutons standard ; automatismes de génération, replanification et satisfaction.
+- Vérifié : rapport final 0AfgK00000Z4Q4bSAF Succeeded, 114 composants et 18 tests réussis. Les Flows après sauvegarde sont réellement sollicités par les tests de création/replanification du parcours et d'alerte unique.
+- Bloqué : clics UI, preuve Agentforce et planification réellement déclenchée restent NotRun.
+- Prochaine action : déploiement réel du parcours, en excluant la sonde existante pour préserver sa configuration pendant le guidage Builder ; contrôler ensuite activation et prochain déclenchement.
+
+### Parcours et écrans déployés
+
+- Réalisé : déploiement réel 0AfgK00000Z4NwMSAV de 113 composants, sonde préservée ; 18 tests réussis.
+- Vérifié : les six nouveaux Flows sont actifs en version 1. TF_JourneyDaily-1 est WAITING, prochain passage le 7 novembre 2026 à 16:00 UTC, fuseau America/Los_Angeles. Ceci prouve la programmation, pas son exécution.
+- Bloqué : preuve Preview et clics Screen Flow restent NotRun. Certaines traductions ont été altérées par l'encodage d'une commande PowerShell ; les sources UTF-8 sont corrigées et doivent être resynchronisées.
+- Prochaine action : appliquer les listes standard, traductions et layouts du seul opérateur de démonstration ; exécuter le smoke technique du parcours réel sur données fictives, distinct du clic humain.
+
+### Preuve réelle du parcours et de la planification
+
+- Réalisé : smoke du parcours dans l'org réelle, trois simulations identifiées, satisfaction et alerte ; cinq listes standard et libellés UTF-8 déployés.
+- Vérifié : six étapes après approbation technique ; replanification rôle/date ; une seule alerte après répétition. Le Flow de test planifié Once a réellement tourné : Cron TimesTriggered=1 à 03:37:02 UTC, étape Day1 exécutée à 03:37:03 UTC en mode Scheduled. Le job unique n'a plus de prochain passage. Le Flow quotidien demeure programmé indépendamment.
+- Bloqué : clics UI humains et conversations Agentforce restent non prouvés. La première compilation du bundle de sonde retourne HTTP 422, mais un contrôle Employee minimal sans action compile : diagnostic de configuration en cours, pas une panne générale annoncée.
+- Prochaine action : corriger la configuration de sonde, obtenir une compilation puis un Preview réel avant toute intégration métier ; terminer les preuves de reset et les documents de transfert.
+
+## Preuve Agentforce obtenue — clôture technique S0
+
+- Réalisé : bundle Employee minimal configuré avec la seule sonde et Preview démarré avec --use-live-actions.
+- Vérifié : compilation réussie après locale fr ; trace FunctionStep connection_probe avec TF-PROBE-001, statut success et safeSummary exact. Mode Live Test confirmé dans les métadonnées de session. Preuve sans prompts ni identité dans docs/evidence/agent-probe.json.
+- Bloqué : publication/activation du canal Lightning et intégration des quatre actions métier restent à réaliser. Les clics humains des Screen Flows, mesures et vidéo ne sont pas encore prouvés.
+- Prochaine action : raccorder les seules quatre actions métier, tester les conversations réelles et leurs refus, puis publier une configuration relue. La sonde est une preuve technique, pas une fonction RH.

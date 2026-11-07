@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Execute_Due_Step</name>
+        <label>Exécuter l’échéance</label>
+        <locationX>50</locationX>
+        <locationY>200</locationY>
+        <actionName>TF_ExecuteJourneyStep</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>stepId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>68.0</apiVersion>
+    <description>Traite quotidiennement les étapes Pending arrivées à échéance. Heure basée sur le fuseau par défaut de l’org ; vérifier le prochain déclenchement dans Scheduled Jobs.</description>
+    <interviewLabel>TF — Échéances quotidiennes {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>TF — Échéances quotidiennes</label>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Execute_Due_Step</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IsDue__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>JourneyStep__c</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2026-11-07</startDate>
+            <startTime>08:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

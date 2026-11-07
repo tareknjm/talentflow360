@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+<fullName>TF_AwaitingReview</fullName><columns>NAME</columns><columns>CandidateCode__c</columns><columns>Role__c</columns><columns>Status__c</columns><filterScope>Everything</filterScope><filters><field>Status__c</field><operation>equals</operation><value>ReadyForReview</value></filters><label>Dossiers à examiner</label>
+</ListView>

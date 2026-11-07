@@ -12,5 +12,6 @@
     <tabs>JourneyStep__c</tabs>
     <tabs>PulseResponse__c</tabs>
     <tabs>AgentAudit__c</tabs>
+    <tabs>standard-Task</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

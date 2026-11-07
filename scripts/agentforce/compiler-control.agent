@@ -1,0 +1,25 @@
+system:
+    instructions: "Technical diagnostic only. Do not access data or perform operations."
+    messages:
+        welcome: "Technical diagnostic."
+        error: "Diagnostic unavailable."
+
+config:
+    developer_name: "TalentFlow_Assistant"
+    agent_label: "TalentFlow Assistant"
+    agent_type: "AgentforceEmployeeAgent"
+    description: "Minimal compiler control without actions or identity variables."
+
+start_agent agent_router:
+    description: "Route to a technical greeting."
+    reasoning:
+        instructions: ->
+            | Use the technical greeting subagent.
+        actions:
+            greeting: @utils.transition to @subagent.greeting
+
+subagent greeting:
+    description: "Technical greeting only."
+    reasoning:
+        instructions: ->
+            | Say that this is a technical greeting. Do not claim an action was called.

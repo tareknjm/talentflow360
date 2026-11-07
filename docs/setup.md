@@ -70,7 +70,7 @@ Résultat attendu de la phase 1 : une conversation Preview déclenche réellemen
 Commande utilisée pour le premier déploiement :
 
 ```powershell
-sf.cmd project deploy start --manifest .\manifest\package.xml --target-org TFDev --wait 10
+sf.cmd project deploy start --manifest .\manifest\probe.xml --target-org TFDev --wait 10
 ```
 
 Résultat constaté : `Succeeded`, 1 composant déployé, 0 erreur. La Tooling API confirme la version active 1.
@@ -78,11 +78,13 @@ Résultat constaté : `Succeeded`, 1 composant déployé, 0 erreur. La Tooling A
 ## 6. État des composants locaux
 
 - `force-app` : sonde technique initiale, puis socle métier déployé le 7 novembre 2026. Les actions métier ajoutées localement suivent une validation séparée : voir progress.md.
-- `manifest/package.xml` : manifeste historique de la sonde ; ne constitue pas encore l'inventaire complet du socle.
+- `manifest/package.xml` : inventaire explicite du socle Salesforce. Le manifeste initial de la sonde est conservé dans `manifest/probe.xml`. Le bundle Agentforce est compilé/testé dans un workflow distinct et n'est pas publié par ce manifeste.
 - Dépendances npm : non installées ; elles ne sont pas nécessaires au diagnostic actuel.
-- Dépôt distant Git : non configuré.
+- Destination GitHub de ce checkpoint : https://github.com/tareknjm/talentflow360 ; le résultat du push est consigné dans progress.md.
 
-## 7. Preuve Agentforce à réaliser dans l'interface
+## 7. Procédure Agentforce manuelle de secours
+
+La preuve de sonde a depuis été obtenue dans Preview CLI Live Test : voir docs/evidence/agent-probe.json. Pendant la pause de démonstration, ne pas créer un deuxième agent : le bundle Employee local TalentFlow_Assistant est le point de reprise. Les étapes ci-dessous servent à une vérification manuelle ultérieure, pas à annoncer une publication déjà réalisée.
 
 1. Ouvrir Salesforce dans le navigateur puis Setup (roue dentée). Ne pas créer de projet dans Agentforce Vibes : c'est un éditeur, distinct du Builder.
 2. Rechercher « Agentforce Agents » ou « Agents », ouvrir le Builder disponible et constater le type d'agent ainsi que son utilisateur d'exécution. Résultat attendu : l'interface de configuration est accessible ; noter le refus exact sinon.
@@ -92,7 +94,7 @@ Résultat constaté : `Succeeded`, 1 composant déployé, 0 erreur. La Tooling A
 6. Dans Preview en exécution réelle, demander « Teste la connexion avec TF-PROBE-001 ». Résultat attendu : la trace montre l'appel, le code en entrée et la sortie synthétique exacte du Flow. Une réponse textuelle seule ou un mode de simulation d'action ne suffit pas.
 7. Consigner date, version de l'agent, contexte effectif, résultat et preuve expurgée dans test-results.md. Ne fournir ni capture de jeton ni identité réelle.
 
-Vérification CLI du 7 novembre : la liste Metadata API `Bot` retourne zéro composant. Cela ne prouve pas à elle seule l'absence de tous les types d'agents possibles dans cette version. Aucune configuration Agentforce n'est annoncée comme terminée.
+En API 68, l'inventaire Agentforce utilise AiAgentDefinition et AiAuthoringBundle ; Bot ne suffit pas. Leur absence a été contrôlée avant génération du bundle local. Le Preview réel a ensuite réussi ; la publication/activation Lightning reste à faire.
 
 ## 8. Accès à l'application après déploiement du socle
 
@@ -102,7 +104,17 @@ Vérification CLI du 7 novembre : la liste Metadata API `Bot` retourne zéro com
 4. Dans Object Manager, ouvrir chaque objet TalentFlow puis Page Layouts / Page Layout Assignment. Affecter le layout TalentFlow aux profils de test concernés, après lecture de leurs affectations existantes. Résultat attendu : champs d'approbation et références internes en lecture seule. La présence d'un fichier layout ne prouve pas son affectation.
 5. Depuis un dossier, vérifier la lecture sans ouvrir de chat sur une page d'identité ou de satisfaction. Résultat attendu : le contexte de l'agent ne contient aucune donnée interdite.
 
-## 9. Seed et reset synthétiques
+Au checkpoint : les six affectations Admin ont été sauvegardées et contrôlées ; les boutons standard et listes sont déployés. Les profils d'autres utilisateurs doivent être vérifiés séparément. Pour la visite actuelle, suivre mini-demo.md sans reset préalable.
+
+## 9. Rejouer la sonde par la CLI
+
+1. Dans le projet et le terminal configurés, lancer `sf.cmd agent validate authoring-bundle --api-name TalentFlow_Assistant --target-org TFDev`. Résultat attendu : success=true. La locale Agent Script est fr, pas fr_FR.
+2. Lancer `sf.cmd agent preview start --authoring-bundle TalentFlow_Assistant --use-live-actions --target-org TFDev`. Résultat attendu : session ouverte avec actions réelles. Le marqueur INVALID reste technique et ne désigne aucun utilisateur à créer ; Employee utilise le contexte connecté.
+3. Envoyer `sf.cmd agent preview send --authoring-bundle TalentFlow_Assistant --utterance "Teste la connexion avec TF-PROBE-001" --target-org TFDev`. Résultat attendu : appel connection_probe et safeSummary provenant du Flow réel. En interactif, lancer `sf.cmd agent preview --authoring-bundle TalentFlow_Assistant --use-live-actions --target-org TFDev` ; sans le flag, les actions sont simulées.
+4. Vérifier la trace FunctionStep et mockMode=Live Test dans le répertoire de session .sfdx/agents/TalentFlow_Assistant. Résultat attendu : entrée synthétique et sortie exacte ; ne jamais exporter les prompts ou le contexte complet. export_agent_evidence.py extrait uniquement l'action autorisée.
+5. Fermer la session avec `sf.cmd agent preview end --authoring-bundle TalentFlow_Assistant --target-org TFDev`. Résultat attendu : fin du seul Preview sélectionné ; ne ferme pas les sessions d'un autre utilisateur.
+
+## 10. Seed et reset synthétiques
 
 1. Revalider la cible TFDev par une lecture Organization et confirmer Developer Edition. Résultat attendu : org de développement attendue, aucune production.
 2. Affecter TF_DemoAdmin au responsable de démonstration si nécessaire. Résultat attendu : custom permission TF_DemoTools active.

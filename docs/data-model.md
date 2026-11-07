@@ -118,3 +118,13 @@ Une note inférieure ou égale à 2 doit créer au maximum une tâche d'alerte R
 - Les étapes ouvertes sont replanifiées ; les étapes exécutées restent historiques. Les dates échues seront traitées par le prochain passage quotidien.
 - Le contexte d'exécution réel de l'agent reste à constater avant exposition des actions. Aucun permission set ne retire les droits déjà accordés ailleurs.
 - Écart au brouillon : Score__c conserve une décimale technique et une validation MOD, afin de refuser 1,5 au lieu de l'arrondir silencieusement. Le futur Screen Flow et son service n'accepteront que les cinq entiers ; les arrondis de précision de la plateforme ne constituent pas une validation de saisie.
+
+## Compléments du parcours avant implémentation
+
+JourneyStep__c ajoute `ExecutedAt__c` DateTime, `ExecutionMode__c` Picklist (`Scheduled`, `Simulation`) et `TaskIds__c` Text(255). Seul ExecutionMode__c est ajouté à la sortie de suivi de l'agent pour distinguer une simulation d'une exécution réelle ; les horodatages internes et références de tâches restent exclus.
+Completed signifie que le traitement de l'étape a créé ses tâches, pas que toutes les tâches humaines sont achevées. Pending avec mode Scheduled n'est pas une exécution passée.
+`IsDue__c` est une formule Checkbox : état Pending et DueDate__c <= TODAY(). Le filtre du Flow planifié utilise cette formule car Salesforce refuse une référence à $Flow.CurrentDate dans son Start.
+Les Flows orchestrent la synchronisation après embauche, l'exécution quotidienne et l'alerte après satisfaction. Les services Apex assurent les verrouillages, clés uniques et écritures atomiques de tâches/étapes.
+La clé de parcours est dossier + cycle + jalon ; six offsets en jours calendaires : −7, 0, 1, 30, 60, 90. Les étapes Pending/Failed sont replanifiées ; Completed/Cancelled restent historiques. Le rôle modifie les contenus ouverts, pas les étapes terminées.
+Les tâches vont au RH approbateur (ou au propriétaire du dossier pour une satisfaction créée hors parcours). Le marqueur exact DemoBatch est propagé aux enfants et à Description des tâches synthétiques pour le reset borné.
+Une simulation est limitée aux jalons Day30/Day60/Day90 du lot synthétique, exige TF_DemoTools et marque l'exécution Simulation ; elle crée les vraies tâches de démonstration sans prouver l'échéance future.
