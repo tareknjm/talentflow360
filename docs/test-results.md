@@ -168,3 +168,4 @@ Pas de changement Apex/Flow ni de tests Apex relancés. Les contrôles de cette 
 | UX-GUIDED-BROWSER-001 | Navigateur Salesforce | NotRun | Revoir Mon espace, trois onglets, états vides et actions sur dossiers Hired/ReadyForReview/InterviewScheduled ; effet réel de ADVGRID/showActionBar=false sur New encore à constater. |
 | UX-GUIDED-RESTRICTED-001 | Recruteur/RH réellement restreints | NotRun | Comparer les actions selon permission, droits des listes et contexte effectif Agentforce ; ne pas déduire la sécurité d'une simple invisibilité de bouton. |
 | UX-GUIDED-ACCESSIBILITY-001 | Navigateur, clavier/zoom/mobile | NotRun | Contrôles visuels et ergonomiques non exécutés automatiquement dans Salesforce. |
+| UX-GUIDED-GIT-001 | GitHub tareknjm/talentflow360, main | Passed | Checkpoint ce7ce0c poussé sans force depuis c9e4e05 ; fichiers indexés contrôlés sans motif de credential ni répertoire local exclu. Bilan documentaire ajouté ensuite. |
