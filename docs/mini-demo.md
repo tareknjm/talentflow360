@@ -1,5 +1,7 @@
 # Petite démonstration — point du 7 novembre 2026
 
+**Navigation guidée ajoutée le 8 novembre :** commencer par TalentFlow 360 → **Mon espace**. Trois vues réelles donnent accès aux dossiers à examiner, réservations et étapes à exécuter. Voir [le guide actualisé](ui-ux/guided-workspace.md). Les actions de validation/satisfaction sont désormais conditionnées par l'état ; les instructions historiques ci-dessous restent à interpréter selon l'état réel du dossier.
+
 Durée : environ cinq minutes. Les données sont fictives. Ne pas réinitialiser le lot avant cette visite : il contient les résultats des essais réels.
 Les effectifs ci-dessous sont ceux du checkpoint ; une nouvelle saisie ou le passage quotidien peut les faire évoluer.
 

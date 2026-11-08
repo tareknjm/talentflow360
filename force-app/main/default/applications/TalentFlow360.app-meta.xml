@@ -20,6 +20,7 @@
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>TalentFlow 360</label>
     <navType>Standard</navType>
+    <tabs>TF_MyWorkspace</tabs>
     <tabs>TalentProfile__c</tabs>
     <tabs>InterviewSlot__c</tabs>
     <tabs>JourneyStep__c</tabs>

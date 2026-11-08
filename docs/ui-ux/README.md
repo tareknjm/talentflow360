@@ -1,5 +1,7 @@
 # TalentFlow 360 — conception UI/UX
 
+**Livraison du 8 novembre :** [Mon espace et actions contextuelles](guided-workspace.md) sont déployés dans TFDev. Accueil standard avec listes réelles, règles d'actions et indications par état ; recette navigateur restante. Les chiffres et composants HTML ci-dessous restent ceux de la maquette.
+
 7 novembre 2026. Livrable local de conception, sans déploiement Salesforce. La demande « ok proceed » poursuit la proposition de maquette et de backlog ; les composants de production restent ceux du checkpoint existant.
 
 **Mise à jour après « go » :** le premier incrément natif est maintenant déployé dans TFDev : navigation, fiche candidat à quatre onglets, synthèse et listes associées. Voir [livraison et ouverture de la vraie page](native-workspace.md). Le prototype ci-dessous reste une conception plus large, avec des exemples fixes ; il n'est pas connecté à l'org.

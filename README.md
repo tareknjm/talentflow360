@@ -4,6 +4,8 @@ TalentFlow 360 est un démonstrateur Salesforce de parcours RH interne. Le MVP c
 
 ## État actuel
 
+**UI du 8 novembre :** Mon espace est déployé avec trois listes réelles, et la fiche propose des actions conditionnelles et une prochaine action selon l'état. Navigation et règles relues dans TFDev ; rendu et comptes restreints à recetter. [Guide de visite](docs/ui-ux/guided-workspace.md).
+
 **Reprise du 7 novembre 2026 — quatre actions métier vérifiées depuis Agentforce Preview Live Test.**
 
 Le socle et les quatre actions métier sont déployés dans **TFDev, Developer Edition**. Le parcours J−7 à J+90, la replanification et l'alerte de satisfaction ont été exécutés sur données fictives. La dernière suite complète compte **18 tests Apex réussis**, puis **5 tests ciblés réussis** après ajout de l'indicateur de simulation. La réservation a aussi été vérifiée par deux transactions réellement concurrentes et une vraie échéance Flow a été observée.

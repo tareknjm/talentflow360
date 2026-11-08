@@ -1,16 +1,24 @@
 # Progression
 
-Dernière mise à jour : 7 novembre 2026
+Dernière mise à jour : 8 novembre 2026
 
 ## Phase courante
+
+### Navigation guidée et Mon espace — 8 novembre 2026
+
+- Réalisé : accueil natif TF_MyWorkspace avec trois listes réelles, onglet Mon espace en tête de TalentFlow360 et droit d'onglet TF_WorkspaceAccess affecté à l'opérateur. Actions dynamiques de la fiche : approbation uniquement InterviewScheduled + permission RH, satisfaction uniquement Hired ; Modifier conservé pour les replanifications. Aides « prochaine action » pour les cinq états actuels et conteneurs associés en mode ADVGRID sans barre d'actions configurée. Aucun changement de logique serveur ni de données candidat.
+- Vérifié : cible Developer Edition CAN96, sauvegardes et comparaison avant déploiement ; validation 0AfgK00000Z9gLfSAJ, déploiement 0AfgK00000Z9LqgSAF (5 composants) puis ajustement 0AfgK00000Z9Ak2SAF (1 composant), tous Succeeded. Règles et navigation relues ; UI API HTTP 200 pour trois vues (4/3/6 lignes au contrôle) et apps/Large avec Mon espace en premier. Nouveau droit : une affectation, aucun droit métier ajouté.
+- Bloqué ou non vérifié : pas de blocage technique constaté ; rendu navigateur, visibilité effective des boutons/New, comptes restreints, contexte Agentforce et accessibilité restent NotRun. Les listes couvrent le périmètre accessible, pas uniquement les dossiers de l'utilisateur ; Réservations n'exclut pas le passé. Aucun nouveau statut « entretien réalisé », compteur global ou LWC livré. Guide docs/ui-ux/guided-workspace.md.
+- Prochaine action : rouvrir TalentFlow 360 → Mon espace ; vérifier les trois onglets puis TF-DEMO-002, où Valider l'embauche devrait être absent. Ne pas créer de satisfaction ni modifier un état pour une simple revue visuelle. Après recette, décider des composants personnalisés utiles à partir des limites observées du standard.
 
 ### UI native — premier incrément déployé le 7 novembre 2026
 
 - Enregistrement : checkpoint 6466c3f poussé sans force sur GitHub/main, incluant conception, composants natifs et preuves expurgées ; contrôle des 22 fichiers texte indexés sans motif de credential. Le présent bilan accompagne cet envoi.
 - Réalisé : navigation TalentFlow centrée sur Dossiers/Créneaux/Étapes/Tâches et couleur de marque ; page TF_TalentWorkspace à quatre onglets, synthèse compacte, layout organisé, listes d'entretiens et de parcours avec libellés français. Colonne Dossier talent ajoutée aux créneaux réservés. Guide docs/ui-ux/native-workspace.md ; scripts de staging limité. Aucun Apex, Flow, permission ou enregistrement métier modifié.
 - Vérifié : TFDev Developer Edition CAN96 relue ; sauvegarde et comparaison avant mutation sans changement concurrent ; déploiement initial 0AfgK00000Z99kgSAB (5 composants) et finition 0AfgK00000Z9EQzSAN (8 composants) Succeeded. Affectation Large dans l'application et compact layout relus ; sept champs de page autorisés uniquement ; champs/validations TalentProfile inchangés. UI API HTTP 200 pour Entretiens et Étapes de parcours, colonnes attendues.
-- Bloqué ou non vérifié : rendu réel dans le navigateur, interaction des onglets avec compte restreint, contexte effectivement transmis au panneau global Agentforce et accessibilité restent NotRun. Accueil métier, compteurs, frise graphique et actions conditionnelles non livrés dans cet incrément. Aucun nouveau test Apex exécuté pour ces modifications de présentation.
-- Prochaine action : rouvrir TalentFlow 360, ouvrir TF-DEMO-003 et vérifier Vue d'ensemble/Préparation/Entretiens/Intégration ; consulter aussi le parcours existant de TF-DEMO-001. Puis poursuivre l'accueil standard après cette recette. Les captures de docs/ui-ux restent celles de la maquette, pas du déploiement Salesforce.
+- Vérifié visuellement : capture utilisateur de TF-DEMO-002 dans TalentFlow 360, état Embauche validée, arrivée 16 novembre 2026 ; bandeau, quatre onglets, contenu Intégration et compteur Étapes de parcours (6) visibles. Les lignes détaillées ne sont pas visibles dans la capture. Le bouton Valider l'embauche reste présent malgré l'état Hired ; New apparaît sur la liste des étapes. Un onglet temporaire Identités candidats reste ouvert dans la navigation utilisateur.
+- Bloqué ou non vérifié : autres contenus d'onglets, état vide, interactions avec compte restreint, contexte effectivement transmis au panneau global Agentforce et accessibilité restent NotRun. Accueil métier, compteurs, frise graphique et actions conditionnelles non livrés dans cet incrément. Aucun nouveau test Apex exécuté pour ces modifications de présentation.
+- Prochaine action : vérifier les lignes du parcours et les autres onglets ; traiter ensuite les actions selon l'état et les permissions (TF-080-UX-05), dont la présence de Valider l'embauche sur un dossier déjà validé et de New sur les étapes générées. Fermer l'onglet temporaire Identités candidats pendant la démo. Les captures de docs/ui-ux restent celles de la maquette, pas du déploiement Salesforce.
 
 ### Évolution UI/UX — conception du 7 novembre 2026
 

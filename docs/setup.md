@@ -142,6 +142,8 @@ Sources : [publication Agentforce DX](https://developer.salesforce.com/docs/ai/a
 
 ## 12. Nouvelle fiche candidat native
 
+La livraison initiale ci-dessous est complétée par la section 13 : Mon espace et actions dynamiques du 8 novembre.
+
 Premier incrément déployé le 7 novembre : voir [native-workspace.md](ui-ux/native-workspace.md) pour fichiers, preuves, sauvegardes et retour à l'affichage précédent.
 
 1. Rouvrir TalentFlow 360 depuis le lanceur puis actualiser. Résultat attendu : navigation Dossiers talents, Créneaux d'entretien, Étapes de parcours, Tâches ; une personnalisation utilisateur peut conserver un ordre différent.
@@ -149,3 +151,14 @@ Premier incrément déployé le 7 novembre : voir [native-workspace.md](ui-ux/na
 3. Si l'ancienne page reste visible, ouvrir Object Manager → Dossier talent → Lightning Record Pages, puis TF_TalentWorkspace → Activation ; vérifier l'affectation ordinateur à TalentFlow 360 et les éventuelles affectations plus spécifiques. Résultat attendu : l'override d'application est celui relu dans la preuve ; ne pas changer le défaut de toute l'org sans vérifier les autres usages.
 4. Vérifier les onglets Entretiens et Intégration sur les dossiers existants. Résultat attendu : uniquement les listes du dossier courant, sans identité/satisfaction/approbation dans les champs de page ; aucune confusion Simulation/travail humain terminé.
 5. Refaire les contrôles avec compte recruteur restreint, clavier et zoom 200 %. Résultat attendu : droits objet/champ respectés et aucun contrôle RH induit. Consigner les observations dans test-results.md ; ces essais restent NotRun pour le moment.
+
+## 13. Accueil guidé et actions du 8 novembre
+
+1. Vérifier TFDev, récupérer/comparer les métadonnées du binôme, puis utiliser `python scripts/python/stage_guided_workspace.py` pour préparer les cinq composants UI. Résultat attendu : aucun objet métier, champ, Apex ou Flow dans le staging.
+2. Valider à blanc puis déployer ce répertoire avec project deploy start --source-dir test-results/ux-guided-deploy --target-org TFDev --api-version 68.0, en conservant les niveaux de test adaptés aux seuls changements UI. Résultat attendu : Succeeded ; opération déjà réalisée pour ce checkpoint, ne pas redéployer par réflexe si une personnalisation d'utilisateur diffère.
+3. Affecter TF_WorkspaceAccess aux utilisateurs de recette autorisés, en complément de leurs droits métier. Résultat attendu : seul l'accès à l'onglet Mon espace est ajouté. Affectation à l'opérateur déjà confirmée ; pas d'affectation globale à tous les utilisateurs.
+4. Rouvrir TalentFlow 360 depuis le lanceur ; si nécessaire examiner la personnalisation de navigation. Résultat attendu : Mon espace disponible, trois onglets alimentés par les vues existantes, aucune donnée fictive de maquette.
+5. Ouvrir un dossier Hired existant puis un dossier ReadyForReview. Résultat attendu : validation absente sur les deux, satisfaction proposée sur Hired seulement, aide correspondante. Modifier reste disponible selon les droits afin de conserver la replanification date/rôle.
+6. Pour InterviewScheduled, comparer un RH autorisé et un recruteur restreint. Résultat attendu : validation seulement pour le RH, et refus serveur toujours actif en cas d'appel non autorisé. Ne pas modifier les états de démo pour simuler une preuve.
+7. Vérifier le conteneur Intégration en mode amélioré et son absence attendue de New. Résultat attendu à constater visuellement ; ne pas assimiler showActionBar=false à une restriction de sécurité. Ne pas retirer les permissions globales de démo pour cacher un bouton.
+8. Consigner les résultats observés. Les captures de l'ancienne fiche ne valident pas ces nouvelles règles. Pour revenir en arrière, comparer les sauvegardes ux-guided-baseline aux changements ultérieurs, restaurer la page et l'application puis retirer l'accès au nouvel onglet si nécessaire, sans supprimer de données.

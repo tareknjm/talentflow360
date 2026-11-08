@@ -54,10 +54,12 @@
         <members>InterviewSlot__c</members>
         <members>JourneyStep__c</members>
         <members>PulseResponse__c</members>
+        <members>TF_MyWorkspace</members>
         <members>TalentProfile__c</members>
         <name>CustomTab</name>
     </types>
     <types>
+        <members>TF_MyWorkspace</members>
         <members>TF_TalentWorkspace</members>
         <name>FlexiPage</name>
     </types>
@@ -85,6 +87,7 @@
         <members>TF_DemoAdmin</members>
         <members>TF_HiringApprover</members>
         <members>TF_Recruiter</members>
+        <members>TF_WorkspaceAccess</members>
         <name>PermissionSet</name>
     </types>
     <types>

@@ -67,3 +67,11 @@
 - Quatre actions Apex uniquement ; aucune sonde, action RH ou recherche générique dans la version métier. Confirmation conversationnelle et require_user_confirmation Salesforce pour réserver. Id Apex déclaré object/lightning__recordIdType dans Agent Script, exigence constatée au démarrage Preview.
 - Publication puis activation de la version 1 dans la Developer Edition vérifiée, après appels réels. Métadonnées générées conservées séparément du manifeste backend. Droit TF_AssistantAccess indépendant, déployé après publication et affecté à l'opérateur.
 - Runtime publié testé techniquement ; visibilité Lightning, clics humains et conversation sous compte restreint restent à recetter. Aucun utilisateur technique séparé ni restriction des droits Admin existants n'est revendiqué.
+
+## ADR-011 — Navigation guidée native avant composants personnalisés
+
+- Date : 8 novembre 2026 ; statut : déployé dans TFDev, recette visuelle en attente.
+- Mon espace est une AppPage et un onglet propre à TalentFlow, sans modification de la Home globale ; trois listes de données accessibles, pas de dashboard exécuté sous administrateur ou de KPI figé.
+- Droit d'onglet indépendant TF_WorkspaceAccess ; aucune extension des droits métier. App et page relues avant mutation, sauvegardes conservées hors Git.
+- Actions RH conditionnées par état et permission avec contrôles serveur inchangés. Modifier reste proposé après Hired pour permettre les changements de date/rôle et la replanification existante.
+- Le pipeline visuel et les aides décrivent les cinq états déjà implémentés. Un état « entretien réalisé » et une matrice Deloitte spécifique demanderaient une évolution fonctionnelle séparée ; aucune validation de processus Deloitte n'est revendiquée.

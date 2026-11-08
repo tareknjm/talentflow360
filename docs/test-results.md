@@ -144,3 +144,27 @@ Les lignes de conception ci-dessus décrivent l'état avant la demande « go ».
 | UX-NATIVE-RESTRICTED-001 | Compte recruteur réellement restreint | NotRun | FLS/partage, absence de contexte privé dans le chat, refus RH et visibilité des composants à recetter dans le navigateur. |
 | UX-NATIVE-ACCESSIBILITY-001 | Navigateur Salesforce | NotRun | Navigation clavier, zoom 200 %, largeurs 390/768/1440 et messages de chargement/erreur non vérifiés. |
 | UX-NATIVE-GIT-001 | GitHub tareknjm/talentflow360, main | Passed | 6466c3f poussé sans force depuis d7bcccd ; conception et livraison native incluses, 22 fichiers texte contrôlés sans motif de credential et sans répertoire de session/authentification indexé. Bilan documentaire ajouté ensuite. |
+| UX-NATIVE-BROWSER-002 | Capture utilisateur Salesforce, TF-DEMO-002 | Passed | Rendu natif constaté : bandeau code/rôle/état/disponibilité/arrivée, quatre onglets, Intégration ouverte et compteur six étapes. État Embauche validée et arrivée 16 novembre 2026 visibles. Validation limitée à la zone affichée, sans attester les lignes sous le cadre ni les autres onglets. |
+| UX-NATIVE-CONTEXTUAL-ACTIONS-001 | Capture utilisateur Salesforce, TF-DEMO-002 Hired | NotRun | Amélioration à réaliser/recetter : Valider l'embauche reste affiché sur dossier validé ; bouton New visible sur la liste des étapes malgré showActionBar=false configuré. Ne pas en déduire un contournement serveur ; efficacité de la configuration et visibilité conditionnelle à examiner dans TF-080-UX-05. |
+
+## Mon espace et actions guidées — 8 novembre 2026
+
+Pas de changement Apex/Flow ni de tests Apex relancés. Les contrôles de cette livraison sont des validations de métadonnées, des relectures distantes et des requêtes UI API. Les critères d'affichage restent séparés des garanties serveur.
+
+| ID | Environnement | Statut | Résultat et preuve |
+|---|---|---|---|
+| UX-GUIDED-TARGET-001 | TFDev API 68 | Passed | Organization relue : Developer Edition CAN96 ; sauvegarde ux-guided-baseline, comparaison identique avec ux-guided-predeploy pour page/app/layout/TF_Recruiter. Nouveaux noms de page/onglet/permission absents de l'inventaire avant création. |
+| UX-GUIDED-DRY-001 | TFDev, 0AfgK00000Z9rTySAJ | Failed | Modèle appHomeTemplateOneColumn inexistant et référence de permission raccourcie refusée. Corrigés vers defaultAppHomeTemplate et $Permission.CustomPermission.TF_ApproveHiring ; dépendances onglet/app refusées en cascade, aucune mutation réelle. |
+| UX-GUIDED-DRY-002 | TFDev, 0AfgK00000Z9uwTSAR | Failed | filterListCard refuse showActionBar ; propriétés de barre d'actions/recherche retirées de ces listes d'accueil. Les conteneurs de listes associées ont un contrat différent, validé séparément. |
+| UX-GUIDED-DRY-003 | TFDev, 0AfgK00000Z9gLfSAJ | Passed | Cinq composants validés Succeeded, NoTestRun. |
+| UX-GUIDED-DEPLOY-001 | TFDev, 0AfgK00000Z9LqgSAF | Passed | Cinq composants réellement déployés Succeeded : deux pages, app, onglet et droit d'accès. Aucun objet/champ/Apex/Flow inclus. |
+| UX-GUIDED-EDIT-001 | TFDev, dry-run 0AfgK00000Z9vqvSAB et déploiement 0AfgK00000Z9Ak2SAF | Passed | Un composant Succeeded : retrait de la condition masquant Modifier après Hired pour préserver les changements date/rôle et la replanification existante. Règle finale relue : Edit sans filtre d'état supplémentaire. |
+| UX-GUIDED-ACCESS-001 | TFDev, opérateur connecté | Passed | TF_WorkspaceAccess affecté : 1 succès, 0 échec. Contenu récupéré : visibilité de TF_MyWorkspace seulement, aucun droit objet/champ/RH ajouté. |
+| UX-GUIDED-RULES-001 | Métadonnées récupérées après déploiement final | Passed | Validation : InterviewScheduled AND permission RH ; satisfaction : Hired ; Edit sans filtre d'état. Cinq aides conditionnées par les états existants. Sept fieldItem métier inchangés, aucune identité/approbation/satisfaction dans la page. docs/evidence/ui-guided-workspace.json. Ne prouve pas l'évaluation des règles dans le navigateur. |
+| UX-GUIDED-LISTS-001 | UI API list-records, opérateur connecté | Passed | TF_AwaitingReview, TF_ReservedSlots et TF_OpenSteps : HTTP 200, respectivement 4/3/6 enregistrements dans les pages demandées, maximum 8. Valeurs à l'instant du contrôle, pas des KPI globaux ni une preuve pour un autre compte. |
+| UX-GUIDED-APPS-001 | UI API apps sans formFactor | Failed | HTTP 400 INVALID_API_INPUT : paramètre formFactor requis. Corrigé dans la requête suivante. |
+| UX-GUIDED-APPS-002 | UI API apps?formFactor=Large | Passed | HTTP 200 ; app TalentFlow360 renvoie Mon espace/TF_MyWorkspace en premier dans navItems, avec les quatre entrées métier conservées. |
+| UX-GUIDED-STRUCTURE-001 | Windows local | Passed | XML et syntaxe Python valides ; vérification des règles relues, accès limité à un onglet et preuve expurgée exportée sans headers, contexte de session ou données personnelles. |
+| UX-GUIDED-BROWSER-001 | Navigateur Salesforce | NotRun | Revoir Mon espace, trois onglets, états vides et actions sur dossiers Hired/ReadyForReview/InterviewScheduled ; effet réel de ADVGRID/showActionBar=false sur New encore à constater. |
+| UX-GUIDED-RESTRICTED-001 | Recruteur/RH réellement restreints | NotRun | Comparer les actions selon permission, droits des listes et contexte effectif Agentforce ; ne pas déduire la sécurité d'une simple invisibilité de bouton. |
+| UX-GUIDED-ACCESSIBILITY-001 | Navigateur, clavier/zoom/mobile | NotRun | Contrôles visuels et ergonomiques non exécutés automatiquement dans Salesforce. |

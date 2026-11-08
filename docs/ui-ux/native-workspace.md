@@ -1,5 +1,7 @@
 # Espace candidat natif — livraison du 7 novembre 2026
 
+Suite livrée le 8 novembre : [Mon espace et actions contextuelles](guided-workspace.md). Les actions du bandeau ne suivent plus uniquement le layout : validation et satisfaction ont maintenant des conditions d'état/permission, et les conteneurs associés utilisent ADVGRID/showActionBar=false. L'effet visuel de cette suite reste à recetter.
+
 Premier incrément UI/UX déployé dans TFDev, Developer Edition CAN96, API 68.0. Il transpose la navigation et la fiche candidat de la maquette avec des composants Lightning standard. L'accueil à indicateurs, la frise LWC et les actions conditionnelles avancées restent des travaux distincts.
 
 ## Ouvrir le résultat

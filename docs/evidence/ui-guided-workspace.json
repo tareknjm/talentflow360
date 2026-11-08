@@ -1,0 +1,78 @@
+{
+  "observedAtUtc": "2026-11-08T02:35:37.818955+00:00",
+  "target": "TFDev Developer Edition CAN96",
+  "apiVersion": "68.0",
+  "deployments": [
+    {
+      "id": "0AfgK00000Z9LqgSAF",
+      "components": 5,
+      "status": "Succeeded"
+    },
+    {
+      "id": "0AfgK00000Z9Ak2SAF",
+      "components": 1,
+      "status": "Succeeded"
+    }
+  ],
+  "verification": "Retrieved metadata plus UI API; not a browser or restricted-user test",
+  "dynamicActions": [
+    {
+      "action": "TalentProfile__c.TF_ApproveHiring",
+      "criteria": [
+        {
+          "leftValue": "{!Record.Status__c}",
+          "operator": "EQUAL",
+          "rightValue": "InterviewScheduled"
+        },
+        {
+          "leftValue": "{!$Permission.CustomPermission.TF_ApproveHiring}",
+          "operator": "EQUAL",
+          "rightValue": "true"
+        }
+      ]
+    },
+    {
+      "action": "TalentProfile__c.TF_CapturePulse",
+      "criteria": [
+        {
+          "leftValue": "{!Record.Status__c}",
+          "operator": "EQUAL",
+          "rightValue": "Hired"
+        }
+      ]
+    },
+    {
+      "action": "Edit",
+      "criteria": []
+    }
+  ],
+  "stateHints": 5,
+  "appNavigation": [
+    "TF_MyWorkspace",
+    "TalentProfile__c",
+    "InterviewSlot__c",
+    "JourneyStep__c",
+    "standard-Task"
+  ],
+  "workspacePermission": "Tab visibility only; assigned to connected operator",
+  "views": [
+    {
+      "view": "TF_AwaitingReview",
+      "httpStatus": 200,
+      "pageRecordCount": 4
+    },
+    {
+      "view": "TF_ReservedSlots",
+      "httpStatus": 200,
+      "pageRecordCount": 3
+    },
+    {
+      "view": "TF_OpenSteps",
+      "httpStatus": 200,
+      "pageRecordCount": 6
+    }
+  ],
+  "newButtonSuppression": "ADVGRID and showActionBar=false configured; browser effect NotRun",
+  "browserAcceptance": "NotRun",
+  "restrictedUserAcceptance": "NotRun"
+}
